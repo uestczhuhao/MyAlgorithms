@@ -8,16 +8,20 @@ public class BinarySortTree {
 
     public static void main(String[] args) {
         int i;
-        int[] a = {62,88,58,47,35,73,51,99,37,93};
+//        int[] a = {62,88,58,47,35,73,51,99,37,93};
+        int[] b = {62,88,58,47,35,73,51,99,37,93,29,36,48,49,56,50};
         BinarySortTree testTree = new BinarySortTree ();
-        for (i=0;i<10;i++){
-            testTree.insertBST(a[i]);
+        for (i=0;i<16;i++){
+            testTree.insertBST(b[i]);
         }
         testTree.PreOrderTraverse(testTree.root);
         System.out.println ();
-        testTree.InOrderTraverse (testTree.root);
-        System.out.println ();
-        testTree.PostOrderTraverse (testTree.root);
+//        testTree.InOrderTraverse (testTree.root);
+//        System.out.println ();
+//        testTree.PostOrderTraverse (testTree.root);
+        testTree.deleteBST ( 50 );
+        testTree.PreOrderTraverse(testTree.root);
+
     }
 
     /**
@@ -137,6 +141,95 @@ public class BinarySortTree {
             }
         }
     }
+
+    /**
+     * 从二叉排序树中删除key，并保证删除后的树还是一棵二叉排序树
+     * 对删除的结点有以下三种情况：
+     * 1.叶子结点
+     * 2.仅有左或右子树的结点
+     * 3.左右子树都有的结点
+     * @param key 要删除的关键字key
+     * @return 删除成功返回true，否则返回false
+     */
+    public boolean deleteBST(int key) {
+        BiTNode p =root;
+        BiTNode parent = root;
+        if (p == null)
+            return false;
+        else{
+            //while循环是为了找到关键字对应的结点p，并同时把其双亲结点保存下来（后面的功能更重要）
+            boolean isLeft = false;
+            //isLeft存储要删除的结点p是其双亲结点的左孩子还是右孩子，以便恢复二叉树结构时出错
+            while (p.data != key){
+                parent = p;
+                if (key <p.data){
+                    isLeft = true;
+                    p = p.lChild;
+                }
+                else {
+                    isLeft = false;
+                    p = p.rChild;
+                }
+
+                if (p == null)
+                    return false;
+            }
+            BiTNode temp = null;
+            if (p.rChild == null){
+                if (p.lChild == null)
+                    System.out.println ("This Node has no Child!");
+                else
+                    System.out.println ("This Node Only has Left Child!");
+                p = p.lChild;
+                if (isLeft)
+                    parent.lChild = p;
+                else parent.rChild = p;
+            }
+            else if(p.lChild == null){
+                System.out.println ("This Node Only has Right Child!");
+                p = p.rChild;
+                if (isLeft)
+                    parent.lChild = p;
+                else parent.rChild = p;
+            }
+            else {
+                System.out.println ("This Node has Left and Right Child!");
+                temp = p;
+                BiTNode s = p.lChild;
+                /**转向左子树，然后向右走到“尽头”*/
+                while(s.rChild != null){
+                    temp = s;
+                    s = s.rChild;
+                }
+                p.data= s.data;
+                if(temp != p){
+                    temp.rChild = s.lChild;
+                }
+                else{
+                    temp.lChild = s.lChild;
+                }
+                s = null;
+            }
+            return true;
+
+//            if (p.data == key){
+//
+//                return delete ( p );
+//            }
+//            else if (key < p.data){
+//                return deleteBST ( p.lChild,key );
+//            }
+//            else
+//                return deleteBST ( p.rChild,key );
+        }
+    }
+
+    public boolean delete (BiTNode node,BiTNode parent){
+        BiTNode temp = null;
+
+        return true;
+    }
+
     /**
      * 返回二叉树是否为空树
      * @return 为空则返回true，否则返回false
