@@ -133,6 +133,7 @@ class VoilentMatch implements StringMatch {
                 //当前字符匹配则继续向后匹配
                 i++;
                 j++;
+
             } else {
                 //当前字符不匹配，则i回退到开始处+1
                 //j回退到0

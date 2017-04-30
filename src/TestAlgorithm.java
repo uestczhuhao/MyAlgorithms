@@ -8,6 +8,10 @@ import java.util.TreeMap;
  */
 public class TestAlgorithm {
     public static void main(String[] args) {
+        testKMPMatch ();
+    }
+
+    public static void testKMPMatch(){
 //        kmp.print ();
 //        VoilentMatch test = new VoilentMatch ();
 //        int index= test.indexOf ("goodgoogle","google");
