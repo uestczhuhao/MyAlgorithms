@@ -16,9 +16,10 @@ public class BinarySortTree {
         }
         testTree.PreOrderTraverse(testTree.root);
         System.out.println ();
-//        testTree.InOrderTraverse (testTree.root);
-//        System.out.println ();
-//        testTree.PostOrderTraverse (testTree.root);
+        testTree.InOrderTraverse (testTree.root);
+        System.out.println ();
+        testTree.PostOrderTraverse (testTree.root);
+        System.out.println ();
         testTree.deleteBST ( 50 );
         testTree.PreOrderTraverse(testTree.root);
 
@@ -175,6 +176,7 @@ public class BinarySortTree {
                     return false;
             }
             BiTNode temp = null;
+            //第一种情况，即删除的结点是叶节点或只有左结点
             if (p.rChild == null){
                 if (p.lChild == null)
                     System.out.println ("This Node has no Child!");
@@ -185,6 +187,7 @@ public class BinarySortTree {
                     parent.lChild = p;
                 else parent.rChild = p;
             }
+            //第二种情况，即删除的结点只有右结点
             else if(p.lChild == null){
                 System.out.println ("This Node Only has Right Child!");
                 p = p.rChild;
@@ -192,35 +195,37 @@ public class BinarySortTree {
                     parent.lChild = p;
                 else parent.rChild = p;
             }
+            //第三种情况，即删除的结点左右结点都有
             else {
                 System.out.println ("This Node has Left and Right Child!");
                 temp = p;
                 BiTNode s = p.lChild;
-                /**转向左子树，然后向右走到“尽头”*/
+                /**
+                 * 转向左子树，然后向右走到“尽头”
+                 * 原因是要找到比删除结点小的最大值（前驱），因此在被删除结点p左子树的最右边
+                 * 然后用其值代替被删除的值
+                 * 再重接temp的右/左子树，其中temp是删除p结点前驱的双亲结点
+                 * 因为找到的p的前驱s一定是最右的结点，所以只有左子树
+                 * p：要删除的结点  s：p结点的前驱  temp：s的双亲结点
+                 */
                 while(s.rChild != null){
                     temp = s;
                     s = s.rChild;
                 }
                 p.data= s.data;
                 if(temp != p){
+                    //如果p和temp指向不同结点，则s是temp的右孩子
+                    //此时需要吧s的左子树代替s的位置，即temp.rChild = s.lChild
                     temp.rChild = s.lChild;
                 }
                 else{
+                    //如果p和temp指向同一结点，则可知s即为p的左节点，只需把s的左子树赋给temp即可
                     temp.lChild = s.lChild;
                 }
                 s = null;
             }
             return true;
 
-//            if (p.data == key){
-//
-//                return delete ( p );
-//            }
-//            else if (key < p.data){
-//                return deleteBST ( p.lChild,key );
-//            }
-//            else
-//                return deleteBST ( p.rChild,key );
         }
     }
 
