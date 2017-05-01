@@ -12,6 +12,11 @@ public class AVLTree {
      */
     private BiTNode root;
 
+    //平衡因子的三种可能值，LH代表左高右低，EH代表左右高度相等，RH代表右高左低
+    private static final int LH=1;
+    private static final int EH=0;
+    private static final int RH=-1;
+
 
     /**
      * @param p 最小旋转子树的根节点
@@ -24,7 +29,7 @@ public class AVLTree {
      *           BL(0)  BR(0)              BL(0) BR(0)
      *  旋转之后树的深度之差不超过1
      */
-    private void remoteLeft(BiTNode p) {
+    private void rotateLeft(BiTNode p) {
         System.out.println ("绕"+p.data+"左旋");
         if (p != null){
             BiTNode r = p.rChild;
@@ -53,7 +58,7 @@ public class AVLTree {
      *         /   \                      /      /
      *       BL(0) BR(0)                BL(0)  BR(0)
      */
-    private void remoteRight(BiTNode p) {
+    private void rotateRight(BiTNode p) {
         System.out.println ("绕"+p.data+"左旋");
         if(p != null){
             BiTNode l = p.lChild;
@@ -75,18 +80,198 @@ public class AVLTree {
         }
     }
 
-
-
-
-
-
-
-
+    /**
+     * 左子树高度大于右子树时调用
+     * 做左平衡处理
+     * 平衡因子的调整如图：
+     *         t                       rd
+     *       /   \                   /    \
+     *      l    tr   左旋后右旋    l       t
+     *    /   \       ------->    /  \       \
+     *  ll    rd                ll   rdl     tr
+     *       /
+     *     rdl
+     *
+     *   情况1(rd的BF为1)
+     *
+     *
+     *         t                       rd
+     *       /   \                   /    \
+     *      l    tr   左旋后右旋    l       t
+     *    /   \       ------->    /  \    /  \
+     *  ll    rd                ll   rdl rdr  tr
+     *       /   \
+     *     rdl  rdr
+     *
+     *   情况2(rd的BF为0)
+     *
+     *
+     *         t                       rd
+     *       /   \                   /    \
+     *      l    tr   左旋后右旋    l       t
+     *    /   \       ------->    /       /  \
+     *  ll    rd                ll       rdr  tr
+     *           \
+     *          rdr
+     *
+     *   情况3(rd的BF为-1)
+     *
+     *
+     *         t                         l
+     *       /       右旋处理          /    \
+     *      l        ------>          ll   t
+     *    /   \                            /
+     *   ll   rd                          rd
+     *   情况4(L等高)
+     */
+    private boolean leftBalance(BiTNode t){
+        boolean heightLower = true;
+        BiTNode l = t.lChild;
+        switch (l.bf){
+            case LH:    //左高，做右旋调整，旋转后树的高度减小
+                t.bf = l.bf = EH;
+                rotateRight ( t );
+                break;
+            case RH:    //右高，分情况讨论
+                BiTNode rd = l.rChild;
+                switch (rd.bf) {
+                    case LH:    //情况1
+                        t.bf = RH;
+                        l.bf = EH;
+                        break;
+                    case EH:    //情况2
+                        t.bf = l.bf = EH;
+                        break;
+                    case RH:    //情况3
+                        t.bf = EH;
+                        l.bf = LH;
+                        break;
+                }
+                rd.bf = EH;
+                rotateLeft ( t.lChild );
+                rotateRight ( t );
+                break;
+            case EH:    //特殊情况4,这种情况在添加时不可能出现，只在移除时可能出现，旋转之后整体树高不变
+                l.bf = RH;
+                t.bf = LH;
+                rotateRight ( t );
+                heightLower = false;
+                break;
+        }
+        return heightLower;
+    }
 
     /**
-     * 内置类，表示树的结点
-     * @ClassName BiTNode
+     * 右子树高度大于左子树时调用
+     * 做右平衡处理
+     * 平衡因子的调整如图：
+     * 做右平衡处理
+     * 平衡因子的调整如图：
+     * 注：
+     *           t                               ld
+     *        /     \                          /     \
+     *      tl       r       先右旋再左旋     t       r
+     *             /   \     -------->      /   \       \
+     *           ld    rr                 tl   ldl      rr
+     *          /
+     *       ldl
+     *       情况1(ld的BF为1)
+     *
+     *
+     *           t                               ld
+     *        /     \                          /     \
+     *      tl       r       先右旋再左旋     t       r
+     *             /   \     -------->      /   \    /  \
+     *           ld    rr                 tl   ldl  ldr rr
+     *          /  \
+     *       ldl  ldr
+     *       情况2(ld的BF为0)
+     *
+     *
+     *           t                               ld
+     *        /     \                          /     \
+     *      tl       r       先右旋再左旋     t       r
+     *             /   \     -------->      /        /  \
+     *           ld    rr                 tl        ldr rr
+     *             \
+     *             ldr
+     *       情况3(ld的BF为-1)
+     *
+     *           t                                  r
+     *             \          左旋                /   \
+     *              r        ------->           t      rr
+     *            /   \                          \
+     *           ld   rr                         ld
+     *        情况4(r的BF为0)
+     *           t                               ld
+     *        /     \                          /     \
+     *      tl       r       先右旋再左旋     t       r
+     *             /   \     -------->      /   \       \
+     *           ld    rr                 tl   ldl      rr
+     *          /
+     *       ldl
+     *       情况1(ld的BF为1)
+     *
+     *           t                               ld
+     *        /     \                          /     \
+     *      tl       r       先右旋再左旋     t       r
+     *             /   \     -------->      /        /  \
+     *           ld    rr                 tl        ldr rr
+     *             \
+     *             ldr
+     *       情况3(ld的BF为-1)
+     *
+     *           t                                  r
+     *             \          左旋                /   \
+     *              r        ------->           t      rr
+     *            /   \                          \
+     *           ld   rr                         ld
+     *        情况4(r的BF为0)
      */
+    private boolean rightBalance(BiTNode t) {
+        boolean heightLower = true;
+        BiTNode r = t.rChild;
+        switch (r.bf){
+            case LH:    //左高，分情况讨论
+                BiTNode ld = r.lChild;
+                switch (ld.bf){     //先调整各结点的bf，再旋转
+                    case LH:    //情况1
+                        t.bf = EH;
+                        r.bf = RH;
+                        break;
+                    case EH:    //情况2
+                        t.bf=r.bf = EH;
+                        break;
+                    case RH:    //情况1
+                        t.bf = LH;
+                        t.bf = EH;
+                        break;
+                }
+                ld.bf = EH;
+                rotateRight ( t.rChild );
+                rotateLeft ( t );
+                break;
+            case RH:    //右高，左旋调整
+                t.bf = r.bf = EH;
+                rotateLeft ( t );
+                break;
+            case EH:    //特殊情况4
+                r.bf = LH;
+                t.bf = RH;
+                rotateLeft ( t );
+                heightLower = false;
+                break;
+        }
+        return heightLower;
+    }
+
+
+
+
+        /**
+         * 内置类，表示树的结点
+         * @ClassName BiTNode
+         */
     public class BiTNode{
         private int data;
         private int bf; //结点的平衡因子
