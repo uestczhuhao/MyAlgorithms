@@ -41,11 +41,13 @@ public class MergingSort {
         else {
             System.out.println ("The Start is "+start);
             System.out.println ("The End is "+end);
-            middle = (start+end)/2;
+            middle = (start+end)/2; //把source分为source[start...middle]和source[middle+1...end]两部分
             System.out.println ("The Middle is "+middle);
-            MergeSort ( source,temp,start,middle );
-            MergeSort ( source,temp,middle+1,end );
-            Merge ( temp,des,start,middle,end );
+
+            MergeSort ( source,temp,start,middle ); //递归将source[start...middle]归并为有序的temp[start...middle]
+            MergeSort ( source,temp,middle+1,end ); //递归将source[middle+1...end]归并为有序的temp[middle+1...end]
+            Merge ( temp,des,start,middle,end );  //将temp[start...middle]和temp[middle+1...end]归并到des
+
             System.out.println ("After Merge temp to des:");
             System.out.println ("The des is "+Arrays.toString ( des ));
 
