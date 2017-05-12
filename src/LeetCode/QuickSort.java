@@ -12,7 +12,7 @@ import java.util.List;
 public class QuickSort {
     public static void main(String[] args) {
         ListNode n1 = new ListNode(2);
-        ListNode n2 = new ListNode(1);
+        ListNode n2 = new ListNode(3);
         ListNode n3 = new ListNode(4);
 
         ListNode n4 = new ListNode(8);
@@ -21,15 +21,17 @@ public class QuickSort {
         ListNode n7 = new ListNode(5);
 
         n1.next = n2;
-//        n2.next = n3;
-//        n3.next = n4;
-//        n4.next = n5;
-//        n5.next = n6;
-//        n6.next = n7;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        n5.next = n6;
+        n6.next = n7;
 
-        ListNode n = QuickSort ( n1 );
+//        ListNode n = QuickSort ( n1 );
 //        ListNode n = sortList ( n1 );
 //        System.out.println (n.next.val);
+//        printList ( n );
+        ListNode n = MergeSort ( n1 );
         printList ( n );
     }
 
@@ -108,6 +110,65 @@ public class QuickSort {
 //        System.out.print ("After merge, the list is ");
 //        printList ( n );
         return n;
+    }
+
+    public static ListNode MergeSort(ListNode head ){
+        if (head == null || head.next == null){
+            return head;
+        }
+
+        ListNode mid = findMedian ( head );
+        ListNode newLeft = head, newLeftHead = newLeft;
+        ListNode newRight = mid.next,newRightHead = newRight;
+        do {
+            if(newLeft.next == null)
+                break;
+            if(mid == head)
+                break;
+            newLeft = newLeft.next;
+        } while (newLeft != mid);
+        newLeft.next = null;
+//        System.out.print ("The left list is ");
+//        printList ( newLeftHead );
+        while (newRight != null){
+            newRight = newRight.next;
+        }
+//        System.out.print ("The right list is ");
+//        printList ( newRightHead );
+        ListNode left = MergeSort ( newLeftHead );
+        ListNode right = MergeSort ( newRightHead);
+        ListNode n =merge2List(left,right);
+//        System.out.print ("After merge, the list is ");
+//        printList ( n );
+        return n;
+    }
+
+    private static ListNode merge2List(ListNode left,ListNode right) {
+        ListNode newPointer = new ListNode(0),newHeadPre=newPointer;
+        while (left!=null && right!=null){
+            if(left.val <= right.val){
+                newPointer.next = left;
+                newPointer = newPointer.next;
+                left = left.next;
+            } else {
+                newPointer.next = right;
+                newPointer = newPointer.next;
+                right = right.next;
+            }
+        }
+        while (left != null){
+            newPointer.next = left;
+            newPointer = newPointer.next;
+            left = left.next;
+        }
+
+        while (right != null){
+            newPointer.next = right;
+            newPointer = newPointer.next;
+            right = right.next;
+        }
+        newPointer.next =null;
+        return newHeadPre.next;
     }
 
     private static ListNode findMedian(ListNode head){
