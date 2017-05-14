@@ -6,6 +6,7 @@ import java.util.Stack;
 /**
  * Created by zhuhao on 17-5-13.
  * 用循环的方法实现二叉树的后续遍历算法
+ * 先把各个结点都存入栈，再根据后序遍历的顺序从栈中依次弹出
  */
 public class PostorderTraversal extends ArrayList{
 
@@ -52,6 +53,7 @@ public class PostorderTraversal extends ArrayList{
             }else System.out.println ("The prev now is null!");
 
             System.out.println ("The curr now is "+curr.val);
+            //prev==null的情况是根结点
             if(prev == null || prev.left == curr || prev.right == curr){
                 System.out.println ("The Tree is traversed ");
                 if (curr.left != null){
