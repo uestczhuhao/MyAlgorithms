@@ -141,6 +141,7 @@ public class WordBreak{
     }
 
     private void dfs(ArrayList<String>[] dp, int end, ArrayList<String> result,ArrayList<String> tmp){
+        //从后往前搜的目的是dp[0]是辅助空间，且不为空，可以作为递归返回条件
         if(end <=0 ){
             String res = tmp.get ( tmp.size ()-1 );
             for (int i = tmp.size()-2; i >=0 ; i--){
