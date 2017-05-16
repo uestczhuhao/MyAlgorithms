@@ -1,4 +1,7 @@
 package LeetCode;
+import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by zhuhao on 17-5-15.
@@ -36,7 +39,8 @@ public class TestList {
         n4.next = n5;
         n5.next = n6;
         n6.next = n1;
-        testDetectCycle ( n1 );
+//        testDetectCycle ( n1 );
+        testWordBreak();
     }
 
     public static void testDetectCycle(ListNode head){
@@ -45,5 +49,22 @@ public class TestList {
         if (circleHead!=null)
             System.out.println (circleHead.val);
         else System.out.println (circleHead);
+    }
+
+    public static void testWordBreak(){
+        WordBreak testWord = new WordBreak ();
+        String str ="catsanddog";
+//        String str ="aab";
+        Set<String> dic = new HashSet<String> ();
+        dic.add ( "cat" );
+        dic.add ( "cats" );
+        dic.add ( "and" );
+        dic.add ( "sand" );
+        dic.add ( "dog" );
+//        dic.add ( "ab" );
+//        boolean result = testWord.wordBreak ( str,dic );
+        ArrayList<String> result = testWord.wordBreakTwo ( str,dic );
+//        for (String tem:result)
+//            System.out.println (tem);
     }
 }
