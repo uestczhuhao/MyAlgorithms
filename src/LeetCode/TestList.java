@@ -54,17 +54,17 @@ public class TestList {
     public static void testWordBreak(){
         WordBreak testWord = new WordBreak ();
         String str ="catsanddog";
-//        String str ="aab";
         Set<String> dic = new HashSet<String> ();
         dic.add ( "cat" );
         dic.add ( "cats" );
         dic.add ( "and" );
         dic.add ( "sand" );
         dic.add ( "dog" );
-//        dic.add ( "ab" );
 //        boolean result = testWord.wordBreak ( str,dic );
-        ArrayList<String> result = testWord.wordBreakTwo ( str,dic );
-//        for (String tem:result)
-//            System.out.println (tem);
+//        ArrayList<String> result = testWord.wordBreakTwo ( str,dic );
+        ArrayList<String> result = testWord.wordBreak2 ( str,dic );
+        System.out.println (result.size ());
+        for (String tem:result)
+            System.out.println (tem);
     }
 }

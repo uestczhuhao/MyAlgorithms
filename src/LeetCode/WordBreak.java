@@ -58,8 +58,10 @@ public class WordBreak{
     }
 
     public ArrayList<String> wordBreakTwo(String s, Set<String> dict) {
+        //dp[len]代表从字符串s的len-i到len的字符在dict中
         ArrayList<String>[] dp = new ArrayList[s.length() + 1];
         dp[0] = new ArrayList<String>();
+        System.out.println (dp[0] == null);
         for (int i = 0; i < s.length(); i++) {
             if (dp[i] == null) continue;//必须保证前面已经匹配过了
             for (String word : dict) {
@@ -77,7 +79,8 @@ public class WordBreak{
         }
         System.out.println (Arrays.toString ( dp ));
         ArrayList<String> ans = new ArrayList<String>();
-        //最后还是要拼成原字符串
+        //最后还是要拼成原字符串,如果dp[s.length()] == null，
+        // 则表面字符串s的最后没有与之匹配的dict
         if (dp[s.length()] == null) return ans;
         ArrayList<String> tmp = new ArrayList<String>();
         dfsSearch(dp, s.length(), ans, tmp);
@@ -85,6 +88,7 @@ public class WordBreak{
     }
 
     private void dfsSearch(ArrayList<String>[] dp, int end, ArrayList<String> result, ArrayList<String> tmp) {
+//        System.out.println ("The end now is "+end);
         if (end<=0){
             String ans=tmp.get(tmp.size()-1);
             for (int i = tmp.size()-2; i >=0 ; i--) {
@@ -93,12 +97,63 @@ public class WordBreak{
             result.add(ans);
             return;
         }
-        System.out.println ("The result now is "+result);
-        System.out.println ("The temp is "+tmp);
+//        System.out.println ("The result now is "+result);
+//        System.out.println ("The temp is "+tmp);
         for (String str:dp[end]){
             tmp.add(str);
+            //为什么每次回退str.length()?
+            //因为dp[end]位置上的单词只可能与dp[end-str.length()]
+            //处的单词组成句子，例如dog只有和and或sand
+            //因为在字符串s中它们是挨着的
             dfsSearch(dp,end-str.length(),result,tmp);
             tmp.remove(tmp.size()-1);
+        }
+    }
+
+    public ArrayList<String> wordBreak2(String s, Set<String> dict) {
+        //dp[len]代表从字符串s的len-i到len的字符在dict中
+        ArrayList<String>[] dp = new ArrayList[s.length ()+1];
+        dp[0] = new ArrayList<> (  );
+
+        for(int i=0;i<s.length ();i++){
+            //此处判断的理由是跳过中间状态，只关注需要的
+            //例如有了cat，即dp[3]=cat，则只需关注i=3之后的即可
+            if(dp[i] == null) {
+                continue;//不是很懂这句
+            }
+            for(String word:dict){
+                int len = word.length ();
+                if (i+len >s.length ()) continue;
+                if (s.substring ( i,i+len ).equals ( word )){
+                    if(dp[i+len] == null)
+                        dp[i+len] = new ArrayList<String> (  );
+                    dp[i+len].add ( word );
+                }
+            }
+        }
+        System.out.println (Arrays.toString ( dp ));
+        ArrayList<String> result = new ArrayList();
+        if(dp[s.length ()] ==null) return result;
+
+        ArrayList<String> tmp = new ArrayList(  );
+        dfs(dp,s.length (),result,tmp);
+        return  result;
+    }
+
+    private void dfs(ArrayList<String>[] dp, int end, ArrayList<String> result,ArrayList<String> tmp){
+        if(end <=0 ){
+            String res = tmp.get ( tmp.size ()-1 );
+            for (int i = tmp.size()-2; i >=0 ; i--){
+                res = res+" "+tmp.get ( i );
+            }
+            result.add ( res );
+            return;
+        }
+
+        for(String word:dp[end]){
+            tmp.add ( word );
+            dfs ( dp,end-word.length (),result,tmp );
+            tmp.remove ( tmp.size ()-1);
         }
     }
 }
