@@ -24,23 +24,42 @@ public class TestList {
 //        n4.next = n5;
 //        n5.next = n6;
 //        n6.next = n7;
-        //有环
-        ListNode n1 = new ListNode(1);
-        ListNode n2 = new ListNode(2);
-        ListNode n3 = new ListNode(3);
 
-        ListNode n4 = new ListNode(4);
-        ListNode n5 = new ListNode(5);
-        ListNode n6 = new ListNode(6);
+        //有环
+//        ListNode n1 = new ListNode(1);
+//        ListNode n2 = new ListNode(2);
+//        ListNode n3 = new ListNode(3);
+//
+//        ListNode n4 = new ListNode(4);
+//        ListNode n5 = new ListNode(5);
+//        ListNode n6 = new ListNode(6);
+//
+//        n1.next = n2;
+//        n2.next = n3;
+//        n3.next = n4;
+//        n4.next = n5;
+//        n5.next = n6;
+//        n6.next = n1;
+//        testDetectCycle ( n1 );
+//        testWordBreak();
+
+        RandomListNode n1 = new RandomListNode(2);
+        RandomListNode n2 = new RandomListNode(3);
+        RandomListNode n3 = new RandomListNode(4);
+
+        RandomListNode n4 = new RandomListNode(8);
+        RandomListNode n5 = new RandomListNode(1);
+        RandomListNode n6 = new RandomListNode(6);
+        RandomListNode n7 = new RandomListNode(5);
 
         n1.next = n2;
+        n1.random = n3;
         n2.next = n3;
         n3.next = n4;
         n4.next = n5;
         n5.next = n6;
-        n6.next = n1;
-//        testDetectCycle ( n1 );
-        testWordBreak();
+        n6.next = n7;
+        testCopyRandomList(n1);
     }
 
     public static void testDetectCycle(ListNode head){
@@ -66,5 +85,18 @@ public class TestList {
         System.out.println (result.size ());
         for (String tem:result)
             System.out.println (tem);
+    }
+
+    public static void testCopyRandomList(RandomListNode head){
+        CopyRandomList testRandom = new CopyRandomList ();
+        RandomListNode head1 = testRandom.copyRandomList ( head );
+//        testRandom.printList ( head );
+        System.out.println ("Old Head's Random "+head.random.label);
+        System.out.println ("New Head's Random "+head1.random.label);
+        head1.random.label=3223;
+
+        testRandom.printList ( head );
+        testRandom.printList ( head1 );
+//        testRandom.getElement (head,head);
     }
 }
