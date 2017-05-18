@@ -59,7 +59,9 @@ public class TestList {
         n4.next = n5;
         n5.next = n6;
         n6.next = n7;
-        testCopyRandomList(n1);
+//        testCopyRandomList(n1);
+//        testSingleNumber ();
+        testCandy ();
     }
 
     public static void testDetectCycle(ListNode head){
@@ -98,5 +100,18 @@ public class TestList {
         testRandom.printList ( head );
         testRandom.printList ( head1 );
 //        testRandom.getElement (head,head);
+    }
+
+    public static void testSingleNumber(){
+        int[] A = {2,2,2,3,3,3,4};
+        SingleNumber testSingle = new SingleNumber ();
+        int result = testSingle.singleNumber2 ( A );
+        System.out.println (result);
+    }
+    public static void testCandy(){
+        int[] rating = {2,3,2};
+        Candy candy= new Candy ();
+        int count = candy.candy ( rating );
+        System.out.println (count);
     }
 }
