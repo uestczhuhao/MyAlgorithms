@@ -61,7 +61,8 @@ public class TestList {
         n6.next = n7;
 //        testCopyRandomList(n1);
 //        testSingleNumber ();
-        testCandy ();
+//        testCandy ();
+        testCanComplete();
     }
 
     public static void testDetectCycle(ListNode head){
@@ -113,5 +114,14 @@ public class TestList {
         Candy candy= new Candy ();
         int count = candy.candy ( rating );
         System.out.println (count);
+    }
+    public static void testCanComplete(){
+//        int[] gas = {1,2,6,4,5};
+//        int[] cost = {2,3,3,4,3};
+        int[] gas = {2,3,1};
+        int[] cost = {3,1,2};
+        CanCompleteCircuit testCanCom = new CanCompleteCircuit ();
+        int result = testCanCom.canCompleteCircuit ( gas,cost );
+        System.out.println (result);
     }
 }
