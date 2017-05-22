@@ -63,8 +63,8 @@ public class TestList {
 //        testCopyRandomList(n1);
 //        testSingleNumber ();
 //        testCandy ();
-//        testCanComplete();
-        testMinCut();
+        testCanComplete();
+//        testMinCut();
     }
 
     public static void testDetectCycle(ListNode head){

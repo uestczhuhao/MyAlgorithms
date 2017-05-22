@@ -74,6 +74,12 @@ public class CanCompleteCircuit {
         return -1;
     }
 
+    /**
+     * 若 i = k时，sum小于0，
+     * 表示车无法到达第k个加油站，
+     * 必须从下一个加油站开始出发，
+     * total来判断是否能够循环一圈
+     */
     public int canCompleteCircuitInternet(int[] gas, int[] cost) {
         if (gas == null || cost == null || gas.length == 0 || cost.length == 0) {
             return -1;
