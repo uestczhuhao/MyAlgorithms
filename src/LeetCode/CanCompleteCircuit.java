@@ -55,9 +55,10 @@ public class CanCompleteCircuit {
                     gasSum += gas[N-1];
                     costSum += cost[N-1];
                 }
+                //如果循环进行过程中，已经发现油量不够了，马上退出循环
                 if (gasSum<costSum) break;
                 j++;
-                if(j == N) j=0;
+                if(j == N) j=0; //环结构
             }
 //            j--;
 //            if (i==1) {
@@ -71,5 +72,27 @@ public class CanCompleteCircuit {
         }
 
         return -1;
+    }
+
+    public int canCompleteCircuitInternet(int[] gas, int[] cost) {
+        if (gas == null || cost == null || gas.length == 0 || cost.length == 0) {
+            return -1;
+        }
+
+        int sum = 0;
+        int total = 0;
+        int index = -1;
+
+        for(int i = 0; i<gas.length; i++) {
+            sum += gas[i] - cost[i];
+            total += gas[i] - cost[i];
+            if(sum < 0) {
+                index = i;
+                sum = 0;
+            }
+        }
+        return total < 0 ? -1 : index + 1;
+        // index should be updated here for cases ([5], [4]);
+        // total < 0 is for case [2], [2]
     }
 }

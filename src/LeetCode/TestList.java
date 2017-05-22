@@ -1,4 +1,5 @@
 package LeetCode;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Set;
@@ -62,7 +63,8 @@ public class TestList {
 //        testCopyRandomList(n1);
 //        testSingleNumber ();
 //        testCandy ();
-        testCanComplete();
+//        testCanComplete();
+        testMinCut();
     }
 
     public static void testDetectCycle(ListNode head){
@@ -122,6 +124,15 @@ public class TestList {
         int[] cost = {3,1,2};
         CanCompleteCircuit testCanCom = new CanCompleteCircuit ();
         int result = testCanCom.canCompleteCircuit ( gas,cost );
+        System.out.println (result);
+    }
+
+    public static void testMinCut(){
+        MinCut testMinCut = new MinCut ();
+        String s = "aabbaa";
+        char[] chs = s.toCharArray ();
+        boolean isOrNot = testMinCut.isPalindrome ( chs );
+        int result = testMinCut.minCut ( s );
         System.out.println (result);
     }
 }
