@@ -9,7 +9,8 @@ import java.util.Arrays;
 public class TestClass {
     public static void main(String[] args) {
 //        testReplaceSpace ();
-        testPrintList();
+//        testPrintList();
+        testReconstruct();
     }
 
     public static void testReplaceSpace(){
@@ -36,5 +37,17 @@ public class TestClass {
         ArrayList r1 = testPrint.printListFromTailToHead ( n1 );
         System.out.println ( result);
         System.out.println ( r1);
+    }
+
+    public static void testReconstruct(){
+        ReConstructBinaryTree test = new ReConstructBinaryTree ();
+        int[] pre = {1,2,4,7,3,5,6,8};
+        int[] in = {4,7,2,1,5,3,6,8};
+        TreeNode root =test.reConstructBinaryTree ( pre,in );
+        test.preOrderPrintTree ( root );
+        System.out.println ();
+        test.inOrderPrintTree ( root );
+        System.out.println ();
+        test.postOrderPrintTree ( root );
     }
 }
