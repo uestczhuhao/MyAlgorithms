@@ -12,7 +12,8 @@ import com.sun.org.apache.xpath.internal.SourceTree;
  */
 public class Find {
     public static void main(String[] args) {
-        int[][] test = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
+//        int[][] test = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
+        int[][] test = {};
 //        System.out.println (test[4].length);
         System.out.println (Find(10,test));
     }
