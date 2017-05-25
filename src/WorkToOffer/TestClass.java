@@ -12,7 +12,8 @@ public class TestClass {
 //        testPrintList();
 //        testReconstruct();
 //        testStackQueue();
-        testMinNumber();
+//        testMinNumber();
+        testFibonacci();
     }
 
     public static void testReplaceSpace(){
@@ -64,5 +65,13 @@ public class TestClass {
         int[] arr = {1,1,0,1,1};
         int result = test.minNumberInRotateArray ( arr );
         System.out.println (result);
+    }
+
+    public static void testFibonacci(){
+        int n=20;
+        Fibonacci test = new Fibonacci ();
+        int result =test.fibonacci ( n );
+        System.out.println (result);
+        Math.pow ( 2,n-1 );
     }
 }
