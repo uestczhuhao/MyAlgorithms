@@ -10,7 +10,9 @@ public class TestClass {
     public static void main(String[] args) {
 //        testReplaceSpace ();
 //        testPrintList();
-        testReconstruct();
+//        testReconstruct();
+//        testStackQueue();
+        testMinNumber();
     }
 
     public static void testReplaceSpace(){
@@ -49,5 +51,18 @@ public class TestClass {
         test.inOrderPrintTree ( root );
         System.out.println ();
         test.postOrderPrintTree ( root );
+    }
+
+    public static void testStackQueue(){
+        StackQueue testStack = new StackQueue ();
+        testStack.push (1);
+    }
+
+    public static void testMinNumber(){
+        MinNumberInRotateArray test = new MinNumberInRotateArray();
+//        int[] arr = {4,5,1,2,3};
+        int[] arr = {1,1,0,1,1};
+        int result = test.minNumberInRotateArray ( arr );
+        System.out.println (result);
     }
 }
