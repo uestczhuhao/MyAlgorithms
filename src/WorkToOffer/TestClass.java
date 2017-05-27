@@ -13,7 +13,9 @@ public class TestClass {
 //        testReconstruct();
 //        testStackQueue();
 //        testMinNumber();
-        testFibonacci();
+//        testFibonacci();
+        testPower ();
+//        System.out.println (Math.pow ( 0,-21 ));
     }
 
     public static void testReplaceSpace(){
@@ -73,5 +75,24 @@ public class TestClass {
         int result =test.fibonacci ( n );
         System.out.println (result);
         Math.pow ( 2,n-1 );
+    }
+
+    public static void testPower(){
+        Power test = new Power ();
+        double result = test.power ( 0,-12 );
+        System.out.println (result);
+    }
+
+}
+
+class A {
+    public void test(){
+        System.out.println ("A's Test!");
+    }
+}
+
+class B extends A{
+    public void test1(){
+        System.out.println ("B's Test!");
     }
 }
