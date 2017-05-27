@@ -17,7 +17,8 @@ public class TestClass {
 //        testPower ();
 //        testReorder();
 //        testFindKth ();
-        testReverse();
+//        testReverse();
+        testMerge ();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -131,10 +132,51 @@ public class TestClass {
         ListNode nil = test.ReverseList ( n5 );
         ListNode single = test.ReverseList ( n6 );
         ListNode two = test.ReverseList ( n7 );
-        test.printList(normal);
-        test.printList(nil);
-        test.printList(single);
-        test.printList(two);
+        printList(normal);
+        printList(nil);
+        printList(single);
+        printList(two);
+    }
+    public static void printList(ListNode node){
+        if (node == null){
+            System.out.println ("null");
+            return;
+        }
+        if (node.next == null){
+            System.out.println (node.val);
+            return;
+        }
+        while (node != null){
+            System.out.print (node.val + " ");
+            node = node.next;
+        }
+        System.out.println ();
+
+    }
+
+    public static void testMerge() {
+        Merge test = new Merge ();
+        ListNode n1 = new ListNode ( 1 );
+        ListNode n2 = new ListNode ( 2 );
+        ListNode n3 = new ListNode ( 3 );
+        ListNode n4 = new ListNode ( 4 );
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+
+        ListNode n11 = new ListNode ( 1 );
+        ListNode n12 = new ListNode ( 12 );
+        ListNode n13 = new ListNode ( 13 );
+        ListNode n14 = new ListNode ( 14 );
+        n11.next = n12;
+        n12.next = n13;
+        n13.next = n14;
+
+        ListNode n = null;
+//        ListNode result = test.Merge ( n,n1 );
+//        printList ( result );
+        ListNode result1 = test.Merge ( n1,n11 );
+        printList ( result1 );
     }
 }
 

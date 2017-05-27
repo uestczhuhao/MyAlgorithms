@@ -34,22 +34,7 @@ public class ReverseList {
 
         return newHead;
     }
-    public void printList(ListNode node){
-        if (node == null){
-            System.out.println ("null");
-            return;
-        }
-        if (node.next == null){
-            System.out.println (node.val);
-            return;
-        }
-        while (node != null){
-            System.out.print (node.val + " ");
-            node = node.next;
-        }
-        System.out.println ();
 
-    }
 }
 
 
