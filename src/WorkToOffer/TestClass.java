@@ -14,7 +14,8 @@ public class TestClass {
 //        testStackQueue();
 //        testMinNumber();
 //        testFibonacci();
-        testPower ();
+//        testPower ();
+        testReorder();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -81,6 +82,13 @@ public class TestClass {
         Power test = new Power ();
         double result = test.power ( 0,-12 );
         System.out.println (result);
+    }
+
+    public static void testReorder(){
+        ReOrderArray test = new ReOrderArray();
+        int[] arr = {1,2,3,4,5};
+        test.reOrderArray ( arr );
+        System.out.println (Arrays.toString ( arr ));
     }
 
 }
