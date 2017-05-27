@@ -15,7 +15,8 @@ public class TestClass {
 //        testMinNumber();
 //        testFibonacci();
 //        testPower ();
-        testReorder();
+//        testReorder();
+        testFindKth ();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -89,6 +90,22 @@ public class TestClass {
         int[] arr = {1,2,3,4,5};
         test.reOrderArray ( arr );
         System.out.println (Arrays.toString ( arr ));
+    }
+
+    public static void testFindKth(){
+        FindKthToTail test = new FindKthToTail ();
+        ListNode n1 = new ListNode ( 1 );
+        ListNode n2 = new ListNode ( 2 );
+        ListNode n3 = new ListNode ( 3 );
+        ListNode n4 = new ListNode ( 4 );
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+
+        ListNode result = test.FindKthToTail ( n1,4 );
+        if (result!=null)
+            System.out.println (result.val);
+        else System.out.println (result);
     }
 
 }
