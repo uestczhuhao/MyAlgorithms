@@ -16,7 +16,8 @@ public class TestClass {
 //        testFibonacci();
 //        testPower ();
 //        testReorder();
-        testFindKth ();
+//        testFindKth ();
+        testReverse();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -108,6 +109,33 @@ public class TestClass {
         else System.out.println (result);
     }
 
+    public static void testReverse(){
+        ReverseList test = new ReverseList ();
+        ListNode n1 = new ListNode ( 1 );
+        ListNode n2 = new ListNode ( 2 );
+        ListNode n3 = new ListNode ( 3 );
+        ListNode n4 = new ListNode ( 4 );
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+
+        ListNode n5 =null;
+
+        ListNode n6 = new ListNode ( 7 );
+
+        ListNode n7 = new ListNode ( 8 );
+        ListNode n8 = new ListNode ( 9 );
+        n7.next = n8;
+
+        ListNode normal = test.ReverseList ( n1 );
+        ListNode nil = test.ReverseList ( n5 );
+        ListNode single = test.ReverseList ( n6 );
+        ListNode two = test.ReverseList ( n7 );
+        test.printList(normal);
+        test.printList(nil);
+        test.printList(single);
+        test.printList(two);
+    }
 }
 
 class A {
