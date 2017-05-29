@@ -18,7 +18,8 @@ public class TestClass {
 //        testReorder();
 //        testFindKth ();
 //        testReverse();
-        testMerge ();
+//        testMerge ();
+        testPrint();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -177,6 +178,15 @@ public class TestClass {
 //        printList ( result );
         ListNode result1 = test.Merge ( n1,n11 );
         printList ( result1 );
+    }
+
+    public static void testPrint(){
+        PrintMatrix test = new PrintMatrix ();
+        int[][] ma = {{0,1,2,3},{4,5,6,7},{8,9,10,11},{12,13,14,15}};
+        int[][] ma1 = {{0,1,2,3,4,},{5,6,7,8,9},{10,11,12,13,14},{15,16,17,18,19},{20,21,22,23,24}};
+        int[][] ma3 = {{1,2},{3,4},{5,6},{7,8},{9,10}};
+        ArrayList result = test.printMatrix ( ma3 );
+        System.out.println (result);
     }
 }
 
