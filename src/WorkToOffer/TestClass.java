@@ -19,8 +19,9 @@ public class TestClass {
 //        testFindKth ();
 //        testReverse();
 //        testMerge ();
-        testPrint();
+//        testPrint();
 //        testPopOrder ();
+        testVerifySequence();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -197,6 +198,12 @@ public class TestClass {
 //        System.out.println (result);
     }
 
+    public static void testVerifySequence(){
+        VerifySquenceOfBST test = new VerifySquenceOfBST ();
+        int[] seq = {5,7,6,9,11,10};
+
+        System.out.println (test.VerifySquenceOfBST ( seq ));
+    }
 
 }
 
