@@ -1,11 +1,16 @@
 package WorkToOffer;
 
+import sun.reflect.generics.tree.Tree;
+
+import java.util.ArrayList;
+
 /**
  * Created by zhuhao on 17-5-27.
  */
 public class TestTreeClass {
     public static void main(String[] args) {
-        testSubTree();
+//        testSubTree();
+        testTopToButtom ();
     }
 
     public static void testSubTree(){
@@ -40,6 +45,23 @@ public class TestTreeClass {
 //        System.out.println (isOrNot1);
 //        System.out.println (isOrNot2);
 //        System.out.println (isOrNot3);
+    }
+
+    public static void testTopToButtom(){
+        PrintFromTopToButtiom test = new PrintFromTopToButtiom ();
+        TreeNode root1 = new TreeNode ( 1 );
+        TreeNode node1 = new TreeNode ( 2 );
+        TreeNode node2 = new TreeNode ( 3 );
+        TreeNode node3 = new TreeNode ( 4 );
+        TreeNode node4 = new TreeNode ( 5 );
+
+        root1.left = node1;
+        root1.right = node2;
+        node2.left = node3;
+        node2.right= node4;
+
+        ArrayList result = test.PrintFromTopToBottom ( root1 );
+        System.out.println (result);
     }
 }
 
