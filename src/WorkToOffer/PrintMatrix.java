@@ -13,6 +13,9 @@ public class PrintMatrix {
             return result;
         int row = matrix.length,list = matrix[0].length;
         result = doPrint(matrix,row,list);
+        ArrayList result1 = doPrintSimple(matrix,row,list);
+        System.out.println (result);
+        System.out.println (result1);
         return result;
     }
 
@@ -29,7 +32,7 @@ public class PrintMatrix {
         while (row>0 && list>0){
             int i,j,k,l;
             int count=0;
-            ///打印第一行
+            ///从左向右打印第一行
 //            System.out.println ("第一行");
             for (i=start;count<list;i++,count++){
 //                System.out.print (i + " ");
@@ -41,7 +44,7 @@ public class PrintMatrix {
             //其中最后的+1是最后退出循环时加上的，因此要减去
             i--;
 //            System.out.println ("i = "+i);
-            ///打印第一列
+            ///从上到下打印第一列
 //            System.out.println ("第一列");
             count=0;
             if (row == 1){
@@ -58,7 +61,7 @@ public class PrintMatrix {
             j--;
 //            System.out.println ("j = "+j);
 
-            ///打印第二行，即第三步，最少需要两行两列
+            ///从右向左打印第二行，即第三步，最少需要两行两列
             ///此时的起点为matrix[i][j]
 //            System.out.println ("第二行");
 
@@ -75,7 +78,7 @@ public class PrintMatrix {
                 break;
 
 
-            ///打印第二列，即第四步，要打印第四步，必须要多于两行两列
+            ///从下到上打印第二列，即第四步，要打印第四步，必须要多于两行两列
             //多余两行两列的意思是行数一定要大于2，列数可以等于2,例如一个3*2的矩阵
             //此时起点为matrix[start][j]
             count=0;
@@ -98,8 +101,40 @@ public class PrintMatrix {
     /**
      * 可以直接用每一次的开始和结束的坐标来控制
      */
-    public ArrayList<Integer> doPrintSimple(int[][] matrix,int row,int list){
+    public ArrayList<Integer> doPrintSimple(int[][] matrix,int row,int column){
+        int start = 0;
         ArrayList<Integer> result = new ArrayList<> (  );
+        while (row > start*2 && column>start*2){
+            int endX = column - 1 -start;
+            int endY = row -1 - start;
+            //从左到右打印一行
+            for (int i=start;i<=endX;i++){
+                result.add ( matrix[start][i] );
+            }
+
+            //从上到下打印一列
+            if(start < endY){
+                for (int i=start+1;i<=endY;i++){
+                    result.add ( matrix[i][endX] );
+                }
+            }
+
+            //从右往左打印第二行
+            if (start<endX && start<endY){
+                for (int i=endX-1;i>=start;i--){
+                    result.add ( matrix[endY][i] );
+                }
+            }
+
+            //从下到上打印一列
+            if (start<endX && start<endY-1){
+                for (int i=endY-1;i>=start+1;i--){
+                    result.add ( matrix[i][start] );
+                }
+            }
+
+            start++;
+        }
         return result;
     }
 }

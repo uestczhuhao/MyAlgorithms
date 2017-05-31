@@ -19,8 +19,8 @@ public class TestClass {
 //        testFindKth ();
 //        testReverse();
 //        testMerge ();
-//        testPrint();
-        testPopOrder ();
+        testPrint();
+//        testPopOrder ();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -187,14 +187,14 @@ public class TestClass {
         int[][] ma1 = {{0,1,2,3,4,},{5,6,7,8,9},{10,11,12,13,14},{15,16,17,18,19},{20,21,22,23,24}};
         int[][] ma3 = {{1,2},{3,4},{5,6},{7,8},{9,10}};
         ArrayList result = test.printMatrix ( ma3 );
-        System.out.println (result);
+//        System.out.println (result);
     }
 
     public static void testPopOrder(){
         IsPopOrder test = new IsPopOrder ();
         int[] push ={1,2,3,4,5},pop={4,3,5,1,2};
         boolean result = test.IsPopOrder ( push,pop );
-        System.out.println (result);
+//        System.out.println (result);
     }
 }
 
