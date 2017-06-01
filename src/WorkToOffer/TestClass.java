@@ -21,7 +21,8 @@ public class TestClass {
 //        testMerge ();
 //        testPrint();
 //        testPopOrder ();
-        testVerifySequence();
+//        testVerifySequence();
+        testRandomClone ();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -203,6 +204,25 @@ public class TestClass {
         int[] seq = {5,7,6,9,11,10};
 
         System.out.println (test.VerifySquenceOfBST ( seq ));
+    }
+
+    public static void testRandomClone(){
+        RandomClone test = new RandomClone ();
+        RandomListNode n1 = new RandomListNode ( 1 );
+        RandomListNode n2 = new RandomListNode ( 2 );
+        RandomListNode n3 = new RandomListNode ( 3 );
+        RandomListNode n4 = new RandomListNode ( 4 );
+
+        n1.next=n2;
+        n2.next=n3;
+        n3.next=n4;
+        n1.random = n4;
+        n2.random=n1;
+        n3.random=n2;
+
+        RandomListNode result = test.Clone ( n1 );
+//        System.out.println (result.label+" "+result.next.label+" "+result.next.next.label);
+//        System.out.println (result.random.label+" "+result.next.random.label);
     }
 
 }
