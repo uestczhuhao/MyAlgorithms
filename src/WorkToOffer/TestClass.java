@@ -238,3 +238,15 @@ class B extends A{
         System.out.println ("B's Test!");
     }
 }
+
+class C extends A{
+    public void test2(){
+        System.out.println ("C's Test!");
+    }
+}
+
+class D{
+    public <T extends A> void someTest(B one, C two){
+        System.out.println ("aefaef");
+    }
+}
