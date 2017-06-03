@@ -1,6 +1,7 @@
 package WorkToOffer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.TreeSet;
 
 /**
@@ -25,9 +26,13 @@ public class SwapString {
         if(begin == chars.length-1) {
             result.add(String.valueOf(chars)) ;
         }else {
+            ///字符串与后面的每一个单独字符互换，以新的首字母重排
             for(int i=begin ; i<=chars.length-1 ; i++) {
+                ///for循环处理第一个字符，递归调用解决后续的部分，把问题分解
                 swap(chars, begin, i) ;
 
+//                System.out.println ("i= "+i+" begin= "+begin);
+                System.out.println ("Chars are "+ Arrays.toString (chars));
                 Permutation(chars, begin+1, result);
 
                 swap(chars, begin, i) ;

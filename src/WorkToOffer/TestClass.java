@@ -23,7 +23,8 @@ public class TestClass {
 //        testPopOrder ();
 //        testVerifySequence();
 //        testRandomClone ();
-        testMoreThanHalf();
+//        testMoreThanHalf();
+        testSwapString();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -224,6 +225,12 @@ public class TestClass {
         RandomListNode result = test.Clone ( n1 );
 //        System.out.println (result.label+" "+result.next.label+" "+result.next.next.label);
 //        System.out.println (result.random.label+" "+result.next.random.label);
+    }
+
+    public static void testSwapString(){
+        SwapString test = new SwapString ();
+        String str = "abcd";
+        test.Permutation ( str );
     }
 
     public static void testMoreThanHalf(){
