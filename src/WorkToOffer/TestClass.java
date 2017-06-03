@@ -24,7 +24,8 @@ public class TestClass {
 //        testVerifySequence();
 //        testRandomClone ();
 //        testMoreThanHalf();
-        testSwapString();
+//        testSwapString();
+        testGetLeastNumber();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -239,6 +240,15 @@ public class TestClass {
         int[] arr = {4,2,1,4,4,4};
         int result = test.MoreThanHalfSimple ( arr );
         System.out.println (result);
+    }
+
+    public static void testGetLeastNumber(){
+        GetLeastNumbers test = new GetLeastNumbers ();
+        int[] num = {5,8,9,6,2,3};
+        ArrayList<Integer> re = test.GetLeastNumbers2 ( num,0 );
+        System.out.println (re);
+        ArrayList<Integer> r2 = test.GetLeastNumbers_Solution ( num,0 );
+        System.out.println (r2);
     }
 
 }

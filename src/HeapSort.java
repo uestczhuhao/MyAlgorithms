@@ -9,7 +9,8 @@ public class HeapSort {
     public static void main(String[] args) {
         int[] a = {10,3,3,54,45,6,17,8,9};
         int[] b = {30,10,90,-2,50,70,40,80,60,20,-1};
-        int[] temp = HeapSort ( b );
+        int[] c ={5,8,9,6,2};
+        int[] temp = HeapSort ( a );
         System.out.println (Arrays.toString ( temp ));
 
     }
@@ -38,6 +39,8 @@ public class HeapSort {
     public static void HeapCreate(int[] b,int s,int m){
         int i;
         int temp = b[s];
+        //为什么这么循环？
+        //原因在于二叉树中i的左子结点是2i,右子结点是2i+1
         for (i=2*s;i <= m;i=2*i){
             //此时i指向结点s的子结点中较大的那个
             if(i<m && b[i]<b[i+1])
