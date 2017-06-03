@@ -22,7 +22,8 @@ public class TestClass {
 //        testPrint();
 //        testPopOrder ();
 //        testVerifySequence();
-        testRandomClone ();
+//        testRandomClone ();
+        testMoreThanHalf();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -223,6 +224,14 @@ public class TestClass {
         RandomListNode result = test.Clone ( n1 );
 //        System.out.println (result.label+" "+result.next.label+" "+result.next.next.label);
 //        System.out.println (result.random.label+" "+result.next.random.label);
+    }
+
+    public static void testMoreThanHalf(){
+        MoreThanHalfNumber test = new MoreThanHalfNumber ();
+//        int[] arr = {1,2,3,2,2,2,5,4,2};
+        int[] arr = {4,2,1,4,4,4};
+        int result = test.MoreThanHalfSimple ( arr );
+        System.out.println (result);
     }
 
 }
