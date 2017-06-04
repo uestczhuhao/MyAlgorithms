@@ -244,11 +244,15 @@ public class TestClass {
 
     public static void testGetLeastNumber(){
         GetLeastNumbers test = new GetLeastNumbers ();
-        int[] num = {5,8,9,6,2,3};
+//        int[] num = {5,8,9,6,2,3};
+        int[] num = {50,10,90,30,70,40,80,60,20};
         ArrayList<Integer> re = test.GetLeastNumbers2 ( num,0 );
-        System.out.println (re);
+//        System.out.println (re);
+        ArrayList<Integer> r1 = test.GetLeastNumbers1 ( num,0 );
+        System.out.println (r1);
+
         ArrayList<Integer> r2 = test.GetLeastNumbers_Solution ( num,0 );
-        System.out.println (r2);
+//        System.out.println (r2);
     }
 
 }

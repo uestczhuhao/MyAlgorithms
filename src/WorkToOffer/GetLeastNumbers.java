@@ -1,6 +1,7 @@
 package WorkToOffer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by zhuhao on 17-6-3.
@@ -53,13 +54,47 @@ public class GetLeastNumbers {
         return low;
     }
 
-    //解法2：对一开始的k和输入构建最大堆，后面的值与最大堆顶值比较
+    //解法2：对一开始的k和输入构建辅助最大堆，后面的值与最大堆顶值比较
     //若小于堆顶，则替换堆顶并重构最大堆
     public ArrayList<Integer> GetLeastNumbers1(int [] input, int k){
         ArrayList<Integer> result = new ArrayList<> (  );
-        if (input == null || input.length==0 || k>input.length)
+        if (input == null || input.length==0 || k>input.length || k<=0)
             return result;
+
+        ///input的前k个值保存在tempHead的1～k的位置上
+        int[] tempHead = new int[k+1];
+        System.arraycopy ( input,0,tempHead,1,k);
+        for (int i=k/2;i>0;i--){
+            heapCreate ( tempHead,i,k );
+        }
+        for (int i=k;i<input.length;i++){
+            if (input[i]<=tempHead[1]){
+                tempHead[1]=input[i];
+//                System.out.println ("Before heap adjust: "+Arrays.toString ( tempHead ));
+                heapCreate ( tempHead,1,tempHead.length-1 );
+//                System.out.println ("After heap adjust: "+Arrays.toString ( tempHead ));
+            }
+        }
+        for (int i=1;i<tempHead.length;i++)
+            result.add ( tempHead[i]);
         return result;
+    }
+
+    public void heapCreate(int[] source,int start,int end){
+        if (source==null || source.length == 0 || start>=end)
+            return;
+
+        int i =0;
+        int temp = source[start];
+        for (i=2*start;i<=end;i*=2){
+            if (i<end && source[i]<source[i+1])
+                ++i;
+            if (temp >=source[i])
+                break;
+            source[start] = source[i];
+            start = i;
+        }
+        source[start] = temp;
     }
 
     //解法3：不完全的快排，用循环完成，比解法1更快
