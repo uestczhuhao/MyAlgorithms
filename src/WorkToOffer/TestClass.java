@@ -25,7 +25,8 @@ public class TestClass {
 //        testRandomClone ();
 //        testMoreThanHalf();
 //        testSwapString();
-        testGetLeastNumber();
+//        testGetLeastNumber();
+        testPrintNumber ();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -255,6 +256,12 @@ public class TestClass {
 //        System.out.println (r2);
     }
 
+    public static void testPrintNumber(){
+        int[] numbers = {3,32,321};
+        PrintMinNumber test = new PrintMinNumber ();
+        String result = test.PrintMinNumber2 ( numbers );
+        System.out.println (result);
+    }
 }
 
 class A {
