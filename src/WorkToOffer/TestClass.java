@@ -26,7 +26,8 @@ public class TestClass {
 //        testMoreThanHalf();
 //        testSwapString();
 //        testGetLeastNumber();
-        testPrintNumber ();
+//        testPrintNumber ();
+        testIsUgly();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -260,6 +261,12 @@ public class TestClass {
         int[] numbers = {3,32,321};
         PrintMinNumber test = new PrintMinNumber ();
         String result = test.PrintMinNumber2 ( numbers );
+        System.out.println (result);
+    }
+
+    public static void testIsUgly(){
+        IsUglyNumber test = new IsUglyNumber ();
+        int result = test.GetUglyNumber_Solution ( 20 );
         System.out.println (result);
     }
 }
