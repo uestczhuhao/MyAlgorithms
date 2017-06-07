@@ -27,7 +27,8 @@ public class TestClass {
 //        testSwapString();
 //        testGetLeastNumber();
 //        testPrintNumber ();
-        testIsUgly();
+//        testIsUgly();
+        testFirstNotRepeat();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -269,7 +270,14 @@ public class TestClass {
         int result = test.GetUglyNumber_Solution ( 20 );
         System.out.println (result);
     }
+    public static void testFirstNotRepeat(){
+        FirstNotRepeatingChar test = new FirstNotRepeatingChar ();
+        int index = test.FirstNotRepeatingChar ( "googlr" );
+        System.out.println (index);
+    }
 }
+
+
 
 class A {
     public void test(){
