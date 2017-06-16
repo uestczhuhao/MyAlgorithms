@@ -28,7 +28,9 @@ public class TestClass {
 //        testGetLeastNumber();
 //        testPrintNumber ();
 //        testIsUgly();
-        testFirstNotRepeat();
+//        testFirstNotRepeat();
+        A t = new B();
+        System.out.println (B.value);
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -280,12 +282,25 @@ public class TestClass {
 
 
 class A {
+    A(){
+        System.out.println ("A's Constructor!");
+    }
+    static {
+        System.out.println ("A's init!");
+    }
+    public static final int value =1;
     public void test(){
         System.out.println ("A's Test!");
     }
 }
 
 class B extends A{
+    B(){
+        System.out.println ("B's Constructor!");
+    }
+    static {
+        System.out.println ("B's init!");
+    }
     public void test1(){
         System.out.println ("B's Test!");
     }
@@ -299,6 +314,7 @@ class C extends A{
 
 class D{
     public <T extends A> void someTest(B one, C two){
+
         System.out.println ("aefaef");
     }
 }
