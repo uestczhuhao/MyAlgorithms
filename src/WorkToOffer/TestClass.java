@@ -31,7 +31,8 @@ public class TestClass {
 //        testFirstNotRepeat();
 //        testInversePairs();
 //        testFirstCommon ();
-        testGetNumberOfK();
+//        testGetNumberOfK();
+        testFindNumberAppearOnce();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -318,6 +319,16 @@ public class TestClass {
         GetNumberOfK test = new GetNumberOfK ();
         int result =test.GetNumberOfK ( arr,0 );
         System.out.println (result);
+    }
+
+    public static void testFindNumberAppearOnce(){
+        int[] arr ={2,4,3,6,3,2,5,5};
+        FindNumberAppearOnce test = new FindNumberAppearOnce ();
+        int[] num1 = new int[1];
+        int[] num2 = new int[1];
+        test.FindNumsAppearOnce ( arr,num1,num2 );
+        System.out.println (num1[0]);
+        System.out.println (num2[0]);
     }
 }
 
