@@ -29,7 +29,9 @@ public class TestClass {
 //        testPrintNumber ();
 //        testIsUgly();
 //        testFirstNotRepeat();
-        testInversePairs();
+//        testInversePairs();
+//        testFirstCommon ();
+        testGetNumberOfK();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -283,6 +285,38 @@ public class TestClass {
         int[] arr1 = {7,5,6,4};
         int[] arr = {1,2,3,4,5,6,7,0};
         int result = test.InversePairs_Internet ( arr );
+        System.out.println (result);
+    }
+
+    public static void testFirstCommon(){
+        ListNode n1 = new ListNode ( 1 );
+        ListNode n2 = new ListNode ( 2 );
+        ListNode n3 = new ListNode ( 3 );
+        ListNode n4 = new ListNode ( 4 );
+        ListNode n5 = new ListNode ( 5 );
+        ListNode n6 = new ListNode ( 6 );
+        ListNode n7 = new ListNode ( 7 );
+
+//        ListNode n = null;
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n6;
+        n6.next = n7;
+        n4.next = n5;
+        n5.next = n6;
+
+
+        FindFirstCommonNode test = new FindFirstCommonNode ();
+        ListNode result = test.FindFirstCommonNode ( n1,n4 );
+        System.out.println (result.val);
+
+    }
+
+    public static void testGetNumberOfK(){
+        int[] arr1 = {0,1,2,3,3,3,3,4,5};
+        int[] arr = {};
+        GetNumberOfK test = new GetNumberOfK ();
+        int result =test.GetNumberOfK ( arr,0 );
         System.out.println (result);
     }
 }
