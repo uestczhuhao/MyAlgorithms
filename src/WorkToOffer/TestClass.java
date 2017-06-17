@@ -29,8 +29,7 @@ public class TestClass {
 //        testPrintNumber ();
 //        testIsUgly();
 //        testFirstNotRepeat();
-        A t = new B();
-        System.out.println (B.value);
+        testInversePairs();
 //        System.out.println (Math.pow ( 0,-21 ));
     }
 
@@ -276,6 +275,15 @@ public class TestClass {
         FirstNotRepeatingChar test = new FirstNotRepeatingChar ();
         int index = test.FirstNotRepeatingChar ( "googlr" );
         System.out.println (index);
+    }
+
+    public static void testInversePairs(){
+        InversePairs test = new InversePairs ();
+        int[] source = {10,3,3,54,45,6,17,8,9};
+        int[] arr1 = {7,5,6,4};
+        int[] arr = {1,2,3,4,5,6,7,0};
+        int result = test.InversePairs_Internet ( arr );
+        System.out.println (result);
     }
 }
 

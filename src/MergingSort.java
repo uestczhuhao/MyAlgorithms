@@ -39,17 +39,17 @@ public class MergingSort {
         if(start == end)
             des[start] = source[start];
         else {
-            System.out.println ("The Start is "+start);
-            System.out.println ("The End is "+end);
+//            System.out.println ("The Start is "+start);
+//            System.out.println ("The End is "+end);
             middle = (start+end)/2; //把source分为source[start...middle]和source[middle+1...end]两部分
-            System.out.println ("The Middle is "+middle);
+//            System.out.println ("The Middle is "+middle);
 
             MergeSort ( source,temp,start,middle ); //递归将source[start...middle]归并为有序的temp[start...middle]
             MergeSort ( source,temp,middle+1,end ); //递归将source[middle+1...end]归并为有序的temp[middle+1...end]
             Merge ( temp,des,start,middle,end );  //将temp[start...middle]和temp[middle+1...end]归并到des
 
-            System.out.println ("After Merge temp to des:");
-            System.out.println ("The des is "+Arrays.toString ( des ));
+//            System.out.println ("After Merge temp to des:");
+//            System.out.println ("The des is "+Arrays.toString ( des ));
 
         }
     }
@@ -63,8 +63,8 @@ public class MergingSort {
      * @param end       数组的结束位置
      */
     public static void Merge(int[] temp,int[] des,int start,int middle,int end){
-        System.out.println ("Comming Start End and Middle are "+start+" "+end+" "+middle);
-        System.out.println ("The Temp is "+Arrays.toString ( temp ));
+//        System.out.println ("Comming Start End and Middle are "+start+" "+end+" "+middle);
+//        System.out.println ("The Temp is "+Arrays.toString ( temp ));
 
         int i,j,k,l;
         for (i=start,j=middle+1,k=start;i<=middle && j<=end;k++){
