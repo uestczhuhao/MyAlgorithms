@@ -7,7 +7,8 @@ public class TestClass1 {
     public static void main(String[] args) {
 //        testReverseString ();
 //        testLeftRotate();
-        testIsContinus();
+//        testIsContinus();
+        testLastRemaing();
     }
 
     public static void testReverseString(){
@@ -29,6 +30,12 @@ public class TestClass1 {
         IsContinous test = new IsContinous ();
         int[] arr= {1,2,4,6,0};
         boolean re = test.isContinuous ( arr );
+        System.out.println (re);
+    }
+
+    public static void testLastRemaing(){
+        LastRemaining test = new LastRemaining ();
+        int re = test.LastRemaining_Solution ( 5,3 );
         System.out.println (re);
     }
 }
