@@ -5,7 +5,8 @@ package WorkToOffer;
  */
 public class TestClass1 {
     public static void main(String[] args) {
-        testReverseString ();
+//        testReverseString ();
+        testLeftRotate();
     }
 
     public static void testReverseString(){
@@ -14,5 +15,12 @@ public class TestClass1 {
         String str = "   ";
         String re = test.ReverseSentence ( str );
         System.out.println ("Result ="+re);
+    }
+
+    public static void testLeftRotate(){
+        LeftRotateString test = new LeftRotateString ();
+        String str = "abcdefg";
+        String re = test.LeftRotateString1 ( str,2 );
+        System.out.println (re);
     }
 }
