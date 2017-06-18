@@ -6,7 +6,8 @@ package WorkToOffer;
 public class TestClass1 {
     public static void main(String[] args) {
 //        testReverseString ();
-        testLeftRotate();
+//        testLeftRotate();
+        testIsContinus();
     }
 
     public static void testReverseString(){
@@ -21,6 +22,13 @@ public class TestClass1 {
         LeftRotateString test = new LeftRotateString ();
         String str = "abcdefg";
         String re = test.LeftRotateString1 ( str,2 );
+        System.out.println (re);
+    }
+
+    public static void testIsContinus(){
+        IsContinous test = new IsContinous ();
+        int[] arr= {1,2,4,6,0};
+        boolean re = test.isContinuous ( arr );
         System.out.println (re);
     }
 }
