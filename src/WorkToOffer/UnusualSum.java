@@ -40,4 +40,12 @@ class Solution{
 //        }
         return Solution.getSum ();
     }
+
+    //利用短路求值方法，在n不为0时一直运行递归函数，并把结果相加
+    //当递归运算到n=0时，递归退出并返回结果
+    public int Sum_Solution1(int n){
+        int ans=n;
+        boolean flag = (n>0)&&((ans+=Sum_Solution(n-1))>0);
+        return ans;
+    }
 }
