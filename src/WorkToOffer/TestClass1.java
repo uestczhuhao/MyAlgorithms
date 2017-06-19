@@ -8,7 +8,8 @@ public class TestClass1 {
 //        testReverseString ();
 //        testLeftRotate();
 //        testIsContinus();
-        testLastRemaing();
+//        testLastRemaing();
+        testStrToInt();
     }
 
     public static void testReverseString(){
@@ -36,6 +37,13 @@ public class TestClass1 {
     public static void testLastRemaing(){
         LastRemaining test = new LastRemaining ();
         int re = test.LastRemaining_Solution ( 5,3 );
+        System.out.println (re);
+    }
+
+    public static void testStrToInt(){
+        StrToInt test = new StrToInt ();
+        String str = "112a23";
+        int re = test.StrToInt ( str );
         System.out.println (re);
     }
 }
