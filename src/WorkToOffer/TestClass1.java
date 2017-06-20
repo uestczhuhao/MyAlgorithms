@@ -10,7 +10,8 @@ public class TestClass1 {
 //        testIsContinus();
 //        testLastRemaing();
 //        testStrToInt();
-        testIsNumeric ();
+//        testIsNumeric ();
+        testEntryNodeOfLoop();
     }
 
     public static void testReverseString(){
@@ -54,5 +55,29 @@ public class TestClass1 {
         char[] chs = str.toCharArray ();
         boolean re =test.isNumeric ( chs );
         System.out.println (re);
+    }
+
+    public static void testEntryNodeOfLoop(){
+        EntryNodeOfLoop test = new EntryNodeOfLoop ();
+        ListNode n1 = new ListNode(1);
+        ListNode n2 = new ListNode(2);
+        ListNode n3 = new ListNode(3);
+
+        ListNode n4 = new ListNode(4);
+        ListNode n5 = new ListNode(5);
+        ListNode n6 = new ListNode(6);
+
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        n5.next = n6;
+        n6.next = n3;
+
+        ListNode re = test.EntryNodeOfLoop ( n2 );
+        if (re == null)
+            System.out.println (re);
+        else
+            System.out.println (re.val);
     }
 }
