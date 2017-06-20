@@ -9,7 +9,8 @@ public class TestClass1 {
 //        testLeftRotate();
 //        testIsContinus();
 //        testLastRemaing();
-        testStrToInt();
+//        testStrToInt();
+        testIsNumeric ();
     }
 
     public static void testReverseString(){
@@ -44,6 +45,14 @@ public class TestClass1 {
         StrToInt test = new StrToInt ();
         String str = "112a23";
         int re = test.StrToInt ( str );
+        System.out.println (re);
+    }
+
+    public static void testIsNumeric(){
+        IsNumeric test = new IsNumeric ();
+        String str= "5e2.21";
+        char[] chs = str.toCharArray ();
+        boolean re =test.isNumeric ( chs );
         System.out.println (re);
     }
 }
