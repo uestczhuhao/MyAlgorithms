@@ -16,7 +16,7 @@ public class TestTreeClass {
 //        testConvert();
 //        testTreeDepth();
 //        testSymmetrical();
-        testPrintTreeStage();
+        testPrintZTree();
     }
 
     public static void testSubTree(){
@@ -179,14 +179,14 @@ public class TestTreeClass {
 
     }
 
-    public static void testPrintTreeStage(){
+    public static void testPrintZTree(){
         TreeNode root = new TreeNode ( 8 );
         TreeNode node1 = new TreeNode (6);
         TreeNode node2 = new TreeNode (10);
         TreeNode node3 = new TreeNode (5);
         TreeNode node4 = new TreeNode (7);
-        TreeNode node5 = new TreeNode (7);
-        TreeNode node6 = new TreeNode (5);
+        TreeNode node5 = new TreeNode (2);
+        TreeNode node6 = new TreeNode (3);
 
         root.left = node1;
         root.right = node2;
@@ -195,7 +195,7 @@ public class TestTreeClass {
         node2.left = node5;
         node2.right = node6;
 
-        PrintTreeStage test = new PrintTreeStage ();
+        PrintZTree test = new PrintZTree();
         ArrayList<ArrayList<Integer>> re = test.Print ( root );
         System.out.println (re);
 
