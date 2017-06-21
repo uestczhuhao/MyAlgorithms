@@ -16,7 +16,8 @@ public class TestTreeClass {
 //        testConvert();
 //        testTreeDepth();
 //        testSymmetrical();
-        testPrintZTree();
+//        testPrintZTree();
+        testSerialize();
     }
 
     public static void testSubTree(){
@@ -199,6 +200,34 @@ public class TestTreeClass {
         ArrayList<ArrayList<Integer>> re = test.Print ( root );
         System.out.println (re);
 
+    }
+
+    public static void testSerialize(){
+        TreeNode root = new TreeNode ( 8 );
+        TreeNode node1 = new TreeNode (6);
+        TreeNode node2 = new TreeNode (10);
+        TreeNode node3 = new TreeNode (5);
+        TreeNode node4 = new TreeNode (7);
+        TreeNode node5 = new TreeNode (2);
+        TreeNode node6 = new TreeNode (3);
+
+        root.left = node1;
+        root.right = node2;
+        node1.left = node3;
+        node1.right = node4;
+        node2.left = node5;
+        node2.right = node6;
+
+        SerializeTree test = new SerializeTree ();
+//        String re = test.Serialize ( root );
+//        System.out.println (re);
+
+
+        String str = "1,2,4,$,$,$,3,5,$,$,6,$,$";
+        TreeNode root1 = test.Deserialize ( str );
+//        System.out.println (root1.val);
+        String re = test.Serialize ( root1 );
+        System.out.println (re);
     }
 }
 
