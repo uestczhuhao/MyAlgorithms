@@ -1,5 +1,7 @@
 package WorkToOffer;
 
+import java.util.ArrayList;
+
 /**
  * Created by zhuhao on 17-6-17.
  */
@@ -13,6 +15,7 @@ public class TestClass1 {
 //        testIsNumeric ();
 //        testEntryNodeOfLoop();
         testDelete ();
+        testMaxInWindows();
     }
 
     public static void testReverseString(){
@@ -103,5 +106,12 @@ public class TestClass1 {
         ListNode result =test.deleteDuplication1 ( n1 );
 //        System.out.println (result);
         test.printList ( result );
+    }
+
+    public static void testMaxInWindows(){
+        MaxInWindows test = new MaxInWindows ();
+        int[] ints = {2,3,4,2,6,2,5,1};
+        ArrayList<Integer> re = test.maxInWindows ( ints,0 );
+        System.out.println (re);
     }
 }
