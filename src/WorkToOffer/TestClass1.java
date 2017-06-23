@@ -14,8 +14,9 @@ public class TestClass1 {
 //        testStrToInt();
 //        testIsNumeric ();
 //        testEntryNodeOfLoop();
-        testDelete ();
-        testMaxInWindows();
+//        testDelete ();
+//        testMaxInWindows();
+        testHasPath();
     }
 
     public static void testReverseString(){
@@ -112,6 +113,16 @@ public class TestClass1 {
         MaxInWindows test = new MaxInWindows ();
         int[] ints = {2,3,4,2,6,2,5,1};
         ArrayList<Integer> re = test.maxInWindows ( ints,0 );
+        System.out.println (re);
+    }
+
+    public static void testHasPath(){
+        String matrix = "abcesfcsadee";
+        char[] matrixChs = matrix.toCharArray ();
+        matrix = "bcced";
+        char[] strChs = matrix.toCharArray ();
+        HasPath test = new HasPath ();
+        boolean re =test.hasPath ( matrixChs,3,4,strChs );
         System.out.println (re);
     }
 }
