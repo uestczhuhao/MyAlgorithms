@@ -16,7 +16,8 @@ public class TestClass1 {
 //        testEntryNodeOfLoop();
 //        testDelete ();
 //        testMaxInWindows();
-        testHasPath();
+//        testHasPath();
+        testMovingSteps();
     }
 
     public static void testReverseString(){
@@ -124,5 +125,11 @@ public class TestClass1 {
         HasPath test = new HasPath ();
         boolean re =test.hasPath ( matrixChs,3,4,strChs );
         System.out.println (re);
+    }
+
+    public static void testMovingSteps(){
+        MovingCount test = new MovingCount ();
+        int result = test.movingCount ( 15,20,20 );
+        System.out.println (result);
     }
 }
