@@ -34,6 +34,6 @@ public class TestClass {
 
     public static void testPrint(){
         PrintProbility test = new PrintProbility ();
-        test.PrintProbility ( 11 );
+        test.PrintProbility ( 3 );
     }
 }
