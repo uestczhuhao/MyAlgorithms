@@ -6,7 +6,7 @@ package WorkToOfferAttach;
 public class Print1ToMaxN {
     public static void main(String[] args) {
         Print1ToMaxN test = new Print1ToMaxN ();
-        test.print1ToMaxN ( 1);
+        test.print1ToMaxN ( 2);
     }
     public void print1ToMaxN(int n){
         if (n <= 0 )
@@ -16,20 +16,17 @@ public class Print1ToMaxN {
         for (int i=0;i<n;i++)
             nums[i] = '0';
 
-        for (int i=0;i<10;i++){
-            nums[0] = (char) (48+i);
-            printCore ( nums,n,0 );
-        }
+        printCore ( nums,n,0 );
     }
 
     public void printCore(char[] nums,int length,int index){
-        if (index == length-1){
+        if (index == length){
             printNum ( nums );
             return;
         }
 
         for (int i=0;i<10;i++){
-            nums[index+1] = (char)(i+48);
+            nums[index] = (char) (i+48);
             printCore ( nums,length,index+1 );
         }
     }
