@@ -7,7 +7,8 @@ public class TestClass {
     public static void main(String[] args) {
 //        testMGroup ();
 //        testIsAnagram();
-        testDelete();
+//        testDelete();
+        testPrint ();
     }
 
     public static void testMGroup(){
@@ -29,5 +30,10 @@ public class TestClass {
         String str = "google";
         String str1=test.deleteRepeat ( str );
         System.out.println (str1);
+    }
+
+    public static void testPrint(){
+        PrintProbility test = new PrintProbility ();
+        test.PrintProbility ( 11 );
     }
 }
