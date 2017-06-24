@@ -23,6 +23,7 @@ public class EightQueens {
         return count[0];
     }
 
+    //先全排列，再判断全排列之后的值是否满足条件
     public void countCore(int begin,int[] count,int[] columnIndex){
         if (begin == columnIndex.length-1){
             boolean flag = true;
