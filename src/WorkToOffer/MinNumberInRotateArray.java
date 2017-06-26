@@ -21,6 +21,8 @@ public class MinNumberInRotateArray {
 
             midPointer = (pointer1+pointer2)/2;
             if (array[midPointer] == array[pointer1] && array[midPointer] == array[pointer2]) {
+                //由于pointer1，pointer2和midPointer三者相同，
+                //无法判断中间数字的位置，因此需要用顺序查找的方法
                 return seqSearch(array,pointer1,pointer2);
             }
 
@@ -35,6 +37,7 @@ public class MinNumberInRotateArray {
         return array[midPointer];
     }
 
+    //基于顺序查找的方法
     public int seqSearch(int[] array,int pointer1,int pointer2){
 //        System.out.println ("comming here");
         int result = array[pointer1];

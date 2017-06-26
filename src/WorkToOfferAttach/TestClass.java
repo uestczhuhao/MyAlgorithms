@@ -11,8 +11,13 @@ public class TestClass {
 //        testIsAnagram();
 //        testDelete();
 //        testPrint ();
-        testLowest ();
+//        testLowest ();
+        String str1 = "Hello";
+        String str2 = "Hello";
+        System.out.println (str1 == str2);
+        System.out.println (str1 .equals ( str2 ) );
     }
+
 
     public static void testMGroup(){
         MGroupOfNlengthString test = new MGroupOfNlengthString ();
