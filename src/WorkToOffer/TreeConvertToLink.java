@@ -8,6 +8,8 @@ public class TreeConvertToLink {
         if (pRootOfTree == null)
             return pRootOfTree;
 
+        //pLastList指向双向链表的尾节点，需要返回头节点
+        //因此需要下面的while循环求出pFirstList
         TreeNode[] pLastList = new TreeNode[1];
         convertNode(pRootOfTree,pLastList);
 

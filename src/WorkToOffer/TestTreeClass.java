@@ -13,11 +13,11 @@ public class TestTreeClass {
 //        testSubTree();
 //        testTopToButtom ();
 //        testFindPath();
-//        testConvert();
+        testConvert();
 //        testTreeDepth();
 //        testSymmetrical();
 //        testPrintZTree();
-        testSerialize();
+//        testSerialize();
     }
 
     public static void testSubTree(){
