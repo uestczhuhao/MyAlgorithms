@@ -3,6 +3,8 @@
  */
 
 
+import java.util.Arrays;
+
 /**
  * 定义接口，下面的Class继承并实现
  */
@@ -31,6 +33,7 @@ public class KMPMatch implements StringMatch{
             //当j==-1时，表明上次对比的i值对应主串的字符和j对应的字符不等，因此j才会回退到-1
             //再次比较时，子串从头开始匹配，而当前字串的字符和首项相等，
             // 因此与i值对应主串的字符不相等，因此i++，而j++显然是把子串指针指到子串首
+
             if (j ==-1 || src[i] == sub[j]){
                 i++;
                 j++;
@@ -65,12 +68,14 @@ public class KMPMatch implements StringMatch{
         int k = -1,j = 0;
         next[0]=-1; //next数组的首项为-1
         while (j<length-1){
+
             if (k==-1 || p[j]==p[k]){
                 k++;j++;
                 next[j]=k;
             } else {
                 k=next[k];
             }
+
         }
         return next;
 
@@ -89,6 +94,7 @@ public class KMPMatch implements StringMatch{
         next[0]=-1; //next数组的首项为-1
 
         while (j<length-1){
+
             if (k==-1 || p[j]==p[k]){
                 k++;j++;
                 //修改next数组求法
@@ -102,6 +108,9 @@ public class KMPMatch implements StringMatch{
             } else {
                 k=next[k];
             }
+            System.out.println ("k= "+k);
+            System.out.println ("j= "+j);
+            System.out.println (Arrays.toString ( next ));
         }
         return next;
         }
