@@ -5,83 +5,44 @@ package HaoWeilai;
  * 输入两个整数 n 和 m，从数列1，2，3…….n 中 随意取几个数, 使其和等于 m
  *
  *
- * 类似这种组合问题一般都是使用递归的策略，考虑到n个数和为m,
- * 假设要解决的函数为f(n,m), 假设我们选择了第n个数，那么问题就变成了f(n-1,m-n)，
- * 否则的话问题就是f(n-1,m),
- * 再考虑下边界条件： 如果n<1 或者 m<1显然不会有结果，
- * 如果n==m，那么显然可以输出一个结果了,然后问题就变成了f(m-1,m)
+ * 先取初始值为1,然后依次累加，把序列存入数组arr中，
+ * 下次递归时把m的值减去上次最后的值（即arr数组的最后一个）
+ * 最后当m的值减到0时，arr中即为所求的序列
  */
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
+
 public class SumIsM {
-    public static ArrayList<ArrayList<Integer>> result = new ArrayList<> (  );
     public static void main(String[] args) {
-        Scanner in= new Scanner(System.in);
+        Scanner in = new Scanner ( System.in );
         int n = in.nextInt ();
         int m = in.nextInt ();
-        findCore ( n,m );
-        Collections.sort ( result, new Comparator<ArrayList<Integer>> () {
-            @Override
-            public int compare(ArrayList<Integer> a, ArrayList<Integer> b) {
-                if (a==null || a.size ()==0 || b==null || b.size()==0 )
-                    return 0;
-                if (a.get ( 0 )>b.get ( 0 ))
-                    return 1;
-                if (a.get ( 0 )<b.get ( 0 ))
-                    return -1;
-                return 0;
-            }
-        } );
-        for (ArrayList<Integer> tmp:result){
-            for (int i=0;i<tmp.size ();i++){
-                System.out.print (tmp.get ( i ));
-                if (i!=tmp.size ()-1)
+
+        ArrayList<Integer> arr = new ArrayList<> (  );
+        find ( n,m,arr,1 );
+
+    }
+
+    /**
+     * 每次beg值累加，m值递减，知道m值递减为0时恰好就是要找的序列
+     * @param m 每次递减，到0时截止
+     * @param arr 存储序列，在m==0时输出
+     */
+    public static void find(int n,int m,ArrayList<Integer> arr,int beg){
+
+        if (m == 0){
+            for (int i=0;i<arr.size ();i++){
+                System.out.print (arr.get ( i ));
+                if (i != arr.size ()-1)
                     System.out.print (" ");
             }
             System.out.println ();
         }
-    }
 
-    public static void findCore(int n,int m){
-        if (n<0 || m<0 || m>=2*n){
-            return;
+        for (int i=beg;i<=n && i<=m;i++){
+            arr.add ( i );
+            find ( n,m-i,arr,i+1 );
+            arr.remove ( arr.size ()-1 );
         }
-
-
-        int low = 1,high = n;
-        while (low<high){
-            if (low == m || high == m){
-                if (low == m){
-                    ArrayList<Integer> arr = new ArrayList<> (  );
-                    arr.add ( low );
-                    result.add ( arr );
-                    break;
-                }
-                if (high == m){
-                    ArrayList<Integer> arr = new ArrayList<> (  );
-                    arr.add ( high );
-                    result.add ( arr );
-                    high--;
-                    continue;
-                }
-            }
-            int sum=low+high;
-            if (sum>m)
-                high--;
-            else if (sum<m)
-                low++;
-            else{
-                ArrayList<Integer> arr = new ArrayList<> (  );
-                arr.add ( low );
-                arr.add ( high );
-                result.add ( arr );
-                low++;
-                high--;
-             }
-        }
-
-        return result;
     }
 }
