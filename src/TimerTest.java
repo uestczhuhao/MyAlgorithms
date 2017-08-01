@@ -18,9 +18,9 @@ public class TimerTest {
                 Thread.sleep ( 5000 );
                 System.out.println ("1      end 运行了！时间为："+new Date (  ));
                 runCount++;
-                if (runCount == 5){
-                    timer.cancel ();
-                }
+//                if (runCount == 5){
+//                    timer.cancel ();
+//                }
             } catch (InterruptedException e){
                 e.printStackTrace ();
             }
@@ -31,12 +31,18 @@ public class TimerTest {
         try {
             Mytask1 task1 = new Mytask1 ();
             SimpleDateFormat sdf1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss" );
-            String dataString1 = "2017-07-23 15:30:00";
+            String dataString1 = "2017-07-23 15:59:00";
             Date dateRef1 = sdf1.parse(dataString1);
             System.out.println ("字符串1时间： "+dateRef1.toLocaleString ()+"当前时间： "+new Date (  ).toLocaleString ());
-            timer.schedule ( task1,dateRef1,2000 );
+            timer.scheduleAtFixedRate ( task1,dateRef1,4000 );
         } catch (ParseException e){
             e.printStackTrace ();
         }
     }
 }
+
+
+
+
+
+

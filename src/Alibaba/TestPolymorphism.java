@@ -53,6 +53,15 @@ class A {
         return ("A and A");
     }
 
+
+
+    public void test_0724(){
+        System.out.println ("AAAAAA");
+    }
+    public void test_07241(){
+        System.out.println ("afeawfwae");
+    }
+
 }
 
 class B extends A{
@@ -62,6 +71,10 @@ class B extends A{
 
     public String show(A obj){
         return ("B and A");
+    }
+
+    public void test_0724(){
+        System.out.println ("BBBBBB");
     }
 }
 

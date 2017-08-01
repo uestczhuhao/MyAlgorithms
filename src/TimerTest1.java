@@ -15,7 +15,7 @@ public class TimerTest1 {
         public void run(){
             try {
                 System.out.println ("1 begin 运行了！时间为："+new Date (  ));
-                Thread.sleep ( 2000 );
+                Thread.sleep ( 3000 );
                 System.out.println ("1      end 运行了！时间为："+new Date (  ));
                 runCount++;
                 if (runCount == 5){
@@ -31,7 +31,7 @@ public class TimerTest1 {
         try {
             Mytask1 task1 = new Mytask1 ();
             SimpleDateFormat sdf1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss" );
-            String dataString1 = "2017-07-23 15:33:00";
+            String dataString1 = "2017-07-23 15:48:00";
             Date dateRef1 = sdf1.parse(dataString1);
             System.out.println ("字符串1时间： "+dateRef1.toLocaleString ()+"当前时间： "+new Date (  ).toLocaleString ());
             timer.schedule ( task1,dateRef1,4000 );
