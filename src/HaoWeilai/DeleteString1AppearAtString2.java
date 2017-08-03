@@ -1,8 +1,8 @@
 package HaoWeilai;
 
-import java.util.HashMap;
-import java.util.Scanner;
-
+//import java.util.HashMap;
+//import java.util.Scanner;
+import java.util.*;
 /**
  * Created by zhuhao on 17-8-1.
  */
