@@ -6,10 +6,11 @@ import java.util.Arrays;
 public class MergingSort {
     public static void main(String[] args) {
 //        int[] a = {10,3,3,54,45,6,17,8,9};
-        int[] a = {50,10,90,30,70};
-//        int[] desOut = MergingSort ( a );
-        int[] desOut = mergeSort ( a );
-        System.out.println ( Arrays.toString (desOut));
+        int[] a = {50,10,90,30,70,20,40,60,80};
+        mergeSort ( a );
+//        int[] desOut = mergeSort ( a );
+//        System.out.println ( Arrays.toString (desOut));
+        System.out.println ( Arrays.toString (a));
     }
 
 //    public static int[] MergingSort(int[] source){
@@ -91,32 +92,32 @@ public class MergingSort {
      * 递归版本的归并排序
      */
 
-    public static int[] mergeSort(int[] arr){
-        if (arr == null || arr.length == 0)
-            throw new Error ( "Invalid Input!!!" );
-
-        int[] des = new int[arr.length];
-        mergeCore(arr,des,0,arr.length-1);
-        return des;
-    }
-    public static void mergeCore(int[] src,int[] des,int start,int end){
-        int mid = (start+end)>>1;
-        int temp[] = new int[src.length];
-        if (start == end){
-            des[start] = src[start];
-            System.out.println (start+" "+mid+" "+end);
-            System.out.println (Arrays.toString ( des ));
-
-        }
-        else {
-            ///再对中间数组进行归并排序
-            ///把源数组先分开至中间数组temp
-            mergeCore ( src,temp,start,mid );
-            mergeCore ( src,temp,mid+1,end );
-            merge2Arrs ( temp, des, start, mid ,end );
-        }
-    }
-
+//    public static int[] mergeSort(int[] arr){
+//        if (arr == null || arr.length == 0)
+//            throw new Error ( "Invalid Input!!!" );
+//
+//        int[] des = new int[arr.length];
+//        mergeCore(arr,des,0,arr.length-1);
+//        return des;
+//    }
+//    public static void mergeCore(int[] src,int[] des,int start,int end){
+//        int mid = (start+end)>>1;
+//        int temp[] = new int[src.length];
+//        if (start == end){
+//            des[start] = src[start];
+//            System.out.println (start+" "+mid+" "+end);
+//            System.out.println (Arrays.toString ( des ));
+//
+//        }
+//        else {
+//            ///再对中间数组进行归并排序
+//            ///把源数组先分开至中间数组temp
+//            mergeCore ( src,temp,start,mid );
+//            mergeCore ( src,temp,mid+1,end );
+//            merge2Arrs ( temp, des, start, mid ,end );
+//        }
+//    }
+//
     public static void merge2Arrs(int[] src,int[] des,int start,int mid,int end){
         int i,j,k=start;
         for (i=start,j=mid+1;i<=mid&&j<=end;){
@@ -137,4 +138,49 @@ public class MergingSort {
         }
 
     }
+
+    /**
+     * 递归版本的非归并排序
+     */
+    private static void mergeSort(int[] arr){
+        if (arr == null || arr.length == 0)
+            throw new Error ( "Invalid Input!!!" );
+
+        int[] temp = new int[arr.length];
+        int k=1;
+        while (k<arr.length){
+            mergePass(arr,temp,k,arr.length-1);
+            k*=2;
+            mergePass ( temp,arr,k,arr.length-1 );
+            k*=2;
+        }
+    }
+
+    ///mergePass函数的作用是把长度为k的数组两两合并
+    ///例如当k=1时，就归并0,1  2,3  4,5 等等，当k=2时，就归并 01,23  45,67等
+    private static void mergePass(int[] src,int[] des,int k,int len){
+
+        int i=0,j;
+        while (i<= len-2*k+1){
+            System.out.print ("k = "+k);
+            System.out.print (" i= "+i+" mid = ");
+            System.out.print (i+k-1);
+            System.out.print (" end = ");
+            System.out.print (i+k*2-1);
+            System.out.println ();
+            merge2Arrs ( src,des,i,i+k-1,i+k*2-1 );
+            i = i+2*k;
+        }
+
+
+        if (i<len - k+1){
+            System.out.println ("aafaeeafeaw i= "+i);
+            System.out.println ("k = "+k);
+            merge2Arrs ( src,des,i,i+k-1,len );
+        } else
+            for (j=i;j<=len;j++)
+                des[j] = src[j];
+    }
+
+
 }
