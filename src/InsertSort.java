@@ -12,19 +12,34 @@ public class InsertSort {
 //        int[] a={5,2,4,6,3};
         int[] a = {10,3,3,54,45,6,17,8,9};
 
-        InsertSort ( a );
+        insertSort ( a );
         System.out.println ( Arrays.toString (a));
     }
 
-    public static void InsertSort(int[] a){
-        int i,j,temp;
-        for (i=1;i<a.length;i++){
-            if(a[i] < a[i-1]){
-                temp = a[i];
-                for (j=i-1;j>=0 && a[j]>temp;j--)
-                    a[j+1] = a[j];      //把比记录值大的值都后移，
-                a[j+1] = temp;          //把记录值插入合适的地方
-            }
+//    public static void InsertSort(int[] a){
+//        int i,j,temp;
+//        for (i=1;i<a.length;i++){
+//            if(a[i] < a[i-1]){
+//                temp = a[i];
+//                for (j=i-1;j>=0 && a[j]>temp;j--)
+//                    a[j+1] = a[j];      //把比记录值大的值都后移，
+//                a[j+1] = temp;          //把记录值插入合适的地方
+//            }
+//        }
+//    }
+
+    private static void insertSort(int[] arr){
+        if (arr == null || arr.length == 0){
+            throw new Error ( "Invalid Input!!!" );
         }
+
+        for (int i=1;i<arr.length;i++){
+            int tmp = arr[i],j;
+            for (j=i-1;j>=0 && arr[j]>tmp;j--){
+                arr[j+1] = arr[j];
+            }
+            arr[j+1] = tmp;
+        }
+
     }
 }
