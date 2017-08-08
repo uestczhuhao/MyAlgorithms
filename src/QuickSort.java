@@ -7,11 +7,15 @@ import java.util.Random;
  */
 public class QuickSort {
 
+    private static int testtt= 1;
     public static void main(String[] args) {
         int[] a = {10,3,3,54,45,6,17,8,9};
 //        QSort ( a,0,8 );
-        quickSort (a,0,a.length-1);
-        System.out.println (Arrays.toString (a));
+//        quickSort (a,0,a.length-1);
+//        System.out.println (Arrays.toString (a));
+        QuickSort test = new QuickSort ();
+        test.testtt++;
+        System.out.println (testtt);
     }
 
 
