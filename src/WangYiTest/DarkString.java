@@ -44,7 +44,7 @@ public class DarkString {
      * @param args
      */
     public static void main(String[] args) {
-        Scanner in = new Scanner ( System.in );s
+        Scanner in = new Scanner ( System.in );
         while (in.hasNextLine ()){
             int n = in.nextInt ();
             if (n<=0)
