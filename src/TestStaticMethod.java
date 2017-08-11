@@ -14,7 +14,7 @@ public class TestStaticMethod {
 
     public static void main(String[] args) {
         float oD = 3.0f;
-        
+
         System.out.println (oD);
         System.out.println ("Main Method");
     }
