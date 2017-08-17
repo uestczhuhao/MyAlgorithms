@@ -1,9 +1,6 @@
 package WangYiTest.Spring2017;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by zhuhao on 17-8-17.
@@ -25,6 +22,45 @@ import java.util.Scanner;
  9216
  */
 public class TwoCoreCPU {
+
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner ( System.in );
+//        while (sc.hasNext ()){
+//            int n = sc.nextInt ();
+//            LinkedList<Integer> nums = new LinkedList<> (  );
+//            for (int i=0;i<n;i++)
+//                nums.add ( sc.nextInt () );
+//            Collections.sort ( nums );
+//            System.out.println (nums);
+//            if (nums.size () ==1){
+//                System.out.println (nums.get ( 0 ));
+//                return;
+//            }
+//            int sum1=nums.pollLast (),sum2=nums.get ( nums.size ()/2 );
+//            nums.remove ( nums.size ()/2 );
+//            boolean isTail = false;
+//            while (!nums.isEmpty ()){
+//
+//                if (sum1 > sum2){
+//                    sum2+=nums.get ( nums.size ()/2 );
+//                    nums.remove ( nums.size ()/2 );
+//                } else {
+//                    if (isTail){
+//                        sum1+=nums.pollLast ();
+//                        isTail = false;
+//                    } else {
+//                        sum1+=nums.pollFirst ();
+//                        isTail = true;
+//                    }
+//                }
+//                System.out.println ("Sum1 = "+sum1);
+//                System.out.println ("Sum2 = "+sum2);
+//            }
+//
+//            int res = sum1>sum2 ? sum1:sum2;
+//            System.out.println (res);
+//        }
+//    }
     /*
     根据题目意思，两个CPU平摊任务，然后输出执行这些任务的最小时间，最理想的情况是，
     每个CPU执行的任务占所有任务的总时间的一半（wholeTime/2），
@@ -43,38 +79,26 @@ public class TwoCoreCPU {
         Scanner sc = new Scanner ( System.in );
         while (sc.hasNext ()){
             int n = sc.nextInt ();
-            LinkedList<Integer> nums = new LinkedList<> (  );
-            for (int i=0;i<n;i++)
-                nums.add ( sc.nextInt () );
-            Collections.sort ( nums );
-            System.out.println (nums);
-            if (nums.size () ==1){
-                System.out.println (nums.get ( 0 ));
-                return;
+            int[] nums = new int[n];
+            int sum = 0;
+            for (int i=0;i<n;i++){
+                nums[i] = sc.nextInt()>>10;
+                sum+=nums[i];
             }
-            int sum1=nums.pollLast (),sum2=nums.get ( nums.size ()/2 );
-            nums.remove ( nums.size ()/2 );
-            boolean isTail = false;
-            while (!nums.isEmpty ()){
+            int[] dp = new int[sum/2+1];
+            // dp[j]表示在容量为j的情况下可存放的重量
+            // 如果不放arr[i]重量为dp[j],如果放arr[i]重量为dp[j-arr[i]]+arr[i];
+            for (int i=0;i<n;i++){
+                for (int j=sum/2;j>=nums[i];j--){
 
-                if (sum1 > sum2){
-                    sum2+=nums.get ( nums.size ()/2 );
-                    nums.remove ( nums.size ()/2 );
-                } else {
-                    if (isTail){
-                        sum1+=nums.pollLast ();
-                        isTail = false;
-                    } else {
-                        sum1+=nums.pollFirst ();
-                        isTail = true;
-                    }
+                    dp[j] = Math.max ( dp[j],dp[j-nums[i]]+nums[i] );
+                    System.out.println ("i= "+i);
+                    System.out.println ( Arrays.toString (dp));
                 }
-                System.out.println ("Sum1 = "+sum1);
-                System.out.println ("Sum2 = "+sum2);
             }
-
-            int res = sum1>sum2 ? sum1:sum2;
-            System.out.println (res);
+            System.out.println ( Arrays.toString (dp));
+            System.out.println (Math.max ( dp[sum/2],sum-dp[sum/2] )<<10);
         }
+
     }
 }
