@@ -7,13 +7,13 @@ public class DynamicProgramming {
     public static void main(String[] args) {
 //        System.out.println (coinQuestion ( 11 ));
 
-//        int[] value = {9,6,1,4,1};
-//        int[] weight = {4,3,5,2,5};
-//        int result = bagQustion ( 5,value,weight,10 );
-//        System.out.println (result);
+        int[] value = {9,6,1,4,1};
+        int[] weight = {4,3,5,2,5};
+        int result = bagQustion1 ( 5,value,weight,10 );
+        System.out.println (result);
 
-        int[] nums= {5,3,4,8,6,7};
-        System.out.println (LISQuestion ( nums ));
+//        int[] nums= {5,3,4,8,6,7};
+//        System.out.println (LISQuestion ( nums ));
     }
 
     /**
@@ -69,6 +69,7 @@ public class DynamicProgramming {
                     d[i][j]=(d[i-1][j]>d[i-1][j-weight[i-1]]+value[i-1]?d[i-1][j]:d[i-1][j-weight[i-1]]+value[i-1]);
                 }
             }
+            System.out.println (Arrays.deepToString ( d ));
         }
         ///编号为i的宝石是否在bag中了
         int[] isInBag =new int[n];
@@ -80,6 +81,22 @@ public class DynamicProgramming {
             }
         }
         return d[n][capacity];
+    }
+    private static int bagQustion1(int n,int[] value,int[] weight,int capacity){
+        ///空间复杂度的优化，dp0表示i-1时的值，dp1表示i时的值
+        ///因为当宝石数量为i时，其状态只与i-1有关，因此只需要把i-1的状态保存下来即可
+        int[] dp0 = new int[capacity+1];
+        int[] dp1 = new int[capacity+1];
+        for (int i=1;i<=n;i++){
+            for (int j=1;j<=capacity;j++){
+                if (j>= weight[i-1])
+                    dp1[j] = Math.max ( dp0[j],dp0[j-weight[i-1]]+value[i-1] );
+            }
+            int[] t = dp0;
+            dp0 = dp1;
+            dp1 = t;
+        }
+        return dp0[capacity];
     }
 
     /**

@@ -1,6 +1,7 @@
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.TreeMap;
 
 /**
@@ -8,7 +9,52 @@ import java.util.TreeMap;
  */
 public class TestAlgorithm {
     public static void main(String[] args) {
-        testKMPMatch ();
+//        testKMPMatch ();
+        Scanner sc = new Scanner ( System.in );
+        while (sc.hasNext ()){
+            int n = sc.nextInt ();
+//            int[] nums = new int[n];
+//            kthPrime ( n,nums );
+//            System.out.println (nums[n-1]);
+            if (n<=2){
+                System.out.println (1);
+                return;
+            }
+            int res = Fabcco ( n );
+            System.out.println (res);
+        }
+    }
+
+    public static void kthPrime(int n,int[] nums){
+        nums[0] = 2;
+        int count = 1;
+        for (int i=3;count<n;i++){
+            int t = (int)Math.sqrt ( i );
+            int j = 2,flag=1;
+            while ( j<=t ){
+                if (i%j == 0){
+                    flag = 0;
+                    break;
+                }
+                j++;
+            }
+            if (flag == 1){
+                nums[count] = i;
+                count++;
+            }
+        }
+    }
+
+    public static int Fabcco(int n){
+        int preResult = 1;
+        int pre2Result = 1;
+        int result = 0;
+        for (int i=3;i<=n;i++){
+            result = preResult+pre2Result;
+            pre2Result = preResult;
+            preResult = result;
+        }
+        return result;
     }
 
     public static void testKMPMatch(){

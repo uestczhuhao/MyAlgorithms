@@ -46,11 +46,11 @@ public class DrawChess {
                 int j=0;
                 while (j<n){
                     maxB = maxW = 0;
-                    while (j<n && chs[i][j] == 'B'){
+                    while (j<n && chs[j][i] == 'B'){
                         maxB++;
                         j++;
                     }
-                    while (j<n && chs[i][j] == 'W'){
+                    while (j<n && chs[j][i] == 'W'){
                         maxW++;
                         j++;
                     }
