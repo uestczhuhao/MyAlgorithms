@@ -106,7 +106,7 @@ public class QuickSort {
             while (low<high && arr[low] <= temp)
                 low++;
             arr[high] = arr[low];
-            System.out.println (Arrays.toString ( arr ));
+//            System.out.println (Arrays.toString ( arr ));
         }
         arr[low] = temp;
         return low;
