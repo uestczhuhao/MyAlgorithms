@@ -38,11 +38,16 @@ public class ErrorLog {
     public static void main(String[] args) {
         Scanner sc = new Scanner ( System.in );
         HashMap<String,Integer> strs = new HashMap<> (  );
+        final HashMap<String,Integer> couMap = new HashMap<> (  );
         while (sc.hasNext ()){
             String[] strTmp = sc.nextLine ().split ( "\\\\" );
             String str = strTmp[strTmp.length-1];
-            if (strs.get ( str ) == null)
+            int count = 0;
+            if (strs.get ( str ) == null){
                 strs.put ( str,1 );
+                couMap.put ( str,count );
+                count++;
+            }
             else
                 strs.put ( str,strs.get(str)+1 );
         }
@@ -51,20 +56,23 @@ public class ErrorLog {
         Collections.sort ( list, new Comparator<Map.Entry<String, Integer>> () {
             @Override
             public int compare(Map.Entry<String, Integer> map1, Map.Entry<String, Integer> map2) {
-                if (map2.getValue ()!=map1.getValue ())
+                if (!map2.getValue ().equals ( map1.getValue () ))
                     return map2.getValue ()-map1.getValue ();
-                else
-                    return map1.getKey ().compareTo ( map2.getKey () );
+                else{
+                    String st1 = map1.getKey ();
+                    String st2 = map2.getKey ();
+                    int tmp = couMap.get ( st1 )-couMap.get ( st2 );
+                    return tmp;
+                }
             }
         } );
 
-        int count=0;
 //        System.out.println (list+" "+list.size ());
 //        System.out.println (list);
         if (list.size ()>=8){
             for (int i=0;i<8;i++){
                 Map.Entry<String,Integer> tmp = list.get ( i );
-                System.out.println (tmp.getKey ()+" "+tmp.getValue ());
+                System.out.print (tmp.getKey ()+" "+tmp.getValue ()+" ");
             }
         } else {
             for (int i=0;i<list.size ();i++){
