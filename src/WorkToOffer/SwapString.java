@@ -6,7 +6,6 @@ import java.util.TreeSet;
 
 /**
  * Created by zhuhao on 17-6-3.
- * 输出任意顺序的string字符串，例如输入abc，则输出a,b,c,ab,ac,bc....cba等全排列
  */
 public class SwapString {
     public static void main(String[] args) {
@@ -21,24 +20,19 @@ public class SwapString {
         }
         char[] chars = str.toCharArray ();
         TreeSet<String> temp = new TreeSet<>() ;
-        Permutation(chars, 0, temp,2);
+        Permutation(chars, 0, temp);
 
-//        for (int i=1;i<=str.length ();i++){
-//            Permutation(chars, 0, temp,i);
-//        }
         result.addAll(temp) ;
         return result;
     }
 
-    public void Permutation(char[] chars, int begin, TreeSet<String> result,int len) {
+    public void Permutation(char[] chars, int begin, TreeSet<String> result) {
         if(chars==null || chars.length==0 || begin<0 || begin>chars.length-1) { return ; }
 
-        if(begin == len-1) {
+        if(begin == chars.length-1) {
 //            System.out.println (begin);
-            char[] tmp = new char[len];
-            for (int i=0;i<len;i++)
-                tmp[i] = chars[i];
-            result.add(String.valueOf(tmp)) ;
+
+            result.add(String.valueOf(chars)) ;
         }else {
             ///字符串与后面的每一个单独字符互换，以新的首字母重排
             for(int i=begin ; i<=chars.length-1 ; i++) {
@@ -47,7 +41,7 @@ public class SwapString {
 
 //                System.out.println ("i= "+i+" begin= "+begin);
 //                System.out.println ("Chars are "+ Arrays.toString (chars));
-                Permutation(chars, begin+1, result,len);
+                Permutation(chars, begin+1, result);
 
                 swap(chars, begin, i) ;
             }
