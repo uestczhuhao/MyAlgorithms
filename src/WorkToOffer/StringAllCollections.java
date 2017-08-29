@@ -26,7 +26,8 @@ public class StringAllCollections {
         String str = "abc";
         char[] chs = str.toCharArray ();
         permutation ( chs,0 );
-        allCombiling (chs);
+//        allCombiling (chs);
+        doCombBits (chs);
 
         Iterator<String> iterator = set.iterator ();
         while (iterator.hasNext ()){
@@ -61,23 +62,39 @@ public class StringAllCollections {
     public static void allCombiling(char[] chs){
         int n = chs.length;
         for (int i=1;i<=n;i++){
-            doComling ( chs,0,i );
+            doCombining ( chs,0,i );
         }
 
     }
 
-    public static void doComling(char[] chs,int start,int len){
+    public static void doCombining(char[] chs,int start,int len){
         if (len == 0){
             setComb.add ( strB.toString () );
             return;
         }
-        for (int i= start ;i <= chs.length - len;i++){
+        for (int i= start;i <= chs.length - len;i++){
             strB.append ( chs[i] );
-            doComling ( chs,i+1,len-1 );
+            doCombining ( chs,i+1,len-1 );
             strB.deleteCharAt ( strB.length ()-1 );
         }
     }
 
+
+    //利用二进制特性，如果字符串有3位，则依次为001,010,100,...111，
+    //其中001代表a，010代表b，100代表c，值为1的位置代表取对应位置上的字符
+    public static void doCombBits(char[] chars){
+        setComb.clear ();
+        int n = chars.length;
+        int nbits = 1<<n;
+        for (int i=0;i<nbits;i++){
+            strB = new StringBuffer (  );
+            for (int j=0;j<n;j++){
+                if ((i & (1<<j)) != 0)
+                    strB.append ( chars[j] );
+            }
+            setComb.add ( strB.toString () );
+        }
+    }
 
     public static void swapChars(char[] chs,int a,int b){
         char tmp = chs[a];
