@@ -2,6 +2,7 @@ package WorkToOffer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Created by zhuhao on 17-5-22.

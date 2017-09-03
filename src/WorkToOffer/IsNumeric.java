@@ -5,6 +5,26 @@ package WorkToOffer;
  * 在每一次index[0]++之后都要检查是否越界
  */
 public class IsNumeric {
+    public static void main(String[] args) {
+//        IsNumeric test = new IsNumeric ();
+//        String str = "1.2.3";
+//        System.out.println ("Test is numeric or not： "+test.isNumeric ( str.toCharArray () ));
+
+        System.out.println ((int)Character.MAX_VALUE);
+        System.out.println ((int)Character.MIN_VALUE);
+
+        try {
+            for (int i=0;i<=65535;i++){
+                char c = (char) i;
+                System.out.print (c+" ");
+                if (i %100 ==0)
+                    System.out.println ();
+            }
+        } catch (Exception e){
+            e.printStackTrace ();
+        }
+
+    }
     public boolean isNumeric(char[] str) {
         if (str == null || str.length ==0)
             return false;

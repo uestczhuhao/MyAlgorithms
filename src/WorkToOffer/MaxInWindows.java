@@ -2,11 +2,23 @@ package WorkToOffer;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Created by zhuhao on 17-6-21.
  */
 public class MaxInWindows {
+
+    public static void main(String[] args) {
+        int[] arr = {2,3,4,2,6,2,5,1};
+        ArrayList<Integer> list = new ArrayList<> (  );
+        System.out.println (list);
+    }
+    public static void maxCount(int[] arr,int size,ArrayList list){
+        LinkedList<Integer> max = new LinkedList<> (  );
+
+    }
+
     public ArrayList<Integer> maxInWindows(int [] num, int size)
     {
         ArrayList<Integer> result = new ArrayList<> (  );
