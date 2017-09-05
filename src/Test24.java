@@ -2,8 +2,36 @@
  * Created by zhuhao on 17-8-10.
  */
 public class Test24 {
+    private String str = "aaaa";
+    private int a = 11;
+
+    public String getStr(){
+        return str;
+    }
+    public void setStr(String ss){
+        str = ss;
+
+    }
+
+    public int getA() {
+        return a;
+    }
+
+    public void change(int b) {
+        b = 0;
+    }
+
     public static void main(String[] args) {
-        System.out.println (new B().getValue ());
+        Test24 t = new Test24 ();
+        System.out.println (t.getA ());
+
+        System.out.println (t.getStr ());
+
+        t.change ( t.getA () );
+        t.setStr ( "asasas" );
+        System.out.println (t.getA ());
+        System.out.println (t.getStr ());
+//        System.out.println (new B().getValue ());
     }
 
     static class A{
