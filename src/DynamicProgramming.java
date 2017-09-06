@@ -87,7 +87,7 @@ public class DynamicProgramming {
         ///因为当宝石数量为i时，其状态只与i-1有关，因此只需要把i-1的状态保存下来即可
         int[] dp0 = new int[capacity+1];
         int[] dp1 = new int[capacity+1];
-        for (int i=1;i<=n;i++){
+            for (int i=1;i<=n;i++){
             for (int j=1;j<=capacity;j++){
                 if (j>= weight[i-1])
                     dp1[j] = Math.max ( dp0[j],dp0[j-weight[i-1]]+value[i-1] );

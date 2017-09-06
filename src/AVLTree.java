@@ -614,6 +614,7 @@ public class AVLTree<E> {
      *             /   \                   \    \
      *           BL(0)  BR(0)              BL(0) BR(0)
      *  旋转之后树的深度之差不超过1
+     *
      */
     private void rotateLeft(Entry<E> p) {
         System.out.println("绕"+p.element+"左旋");
