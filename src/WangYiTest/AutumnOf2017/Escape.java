@@ -73,6 +73,8 @@ public class Escape {
                 move[i][1] = sc.nextInt();
             }
 
+            //这里可以做如下优化：点i,j处的值可以有其前后左右的值求得
+            //前提是其周围的点可以一步到此点，这个结果从移动的数组可见
             for (int i=0;i<n;i++){
                 for (int j=0;j<m;j++){
                     if (!(i==startX && j==startY) && (map[i][j] == '.')){
