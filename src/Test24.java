@@ -22,15 +22,20 @@ public class Test24 {
     }
 
     public static void main(String[] args) {
-        Test24 t = new Test24 ();
-        System.out.println (t.getA ());
+        String str = "a";
+        str +="b";
+        StringBuffer sb =new StringBuffer ( "ab" );
 
-        System.out.println (t.getStr ());
-
-        t.change ( t.getA () );
-        t.setStr ( "asasas" );
-        System.out.println (t.getA ());
-        System.out.println (t.getStr ());
+//        System.out.println (str.equals ( sb ));
+//        Test24 t = new Test24 ();
+//        System.out.println (t.getA ());
+//
+//        System.out.println (t.getStr ());
+//
+//        t.change ( t.getA () );
+//        t.setStr ( "asasas" );
+//        System.out.println (t.getA ());
+//        System.out.println (t.getStr ());
 //        System.out.println (new B().getValue ());
     }
 
