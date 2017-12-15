@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class TestFrom1 {
     public static void main(String[] args) {
-        test02();
+        test03();
     }
 
     public static void test01(){
@@ -48,4 +48,12 @@ public class TestFrom1 {
             res = res.next;
         }
     }
+
+    public static void test03(){
+        _3LongestSubstring test = new _3LongestSubstring();
+        String s = "abcabcd";
+        int res = test.lengthOfLongestSubstring(s);
+        System.out.println(res);
+    }
+
 }
