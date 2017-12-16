@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class TestFrom1 {
     public static void main(String[] args) {
-        test03();
+        test07();
     }
 
     public static void test01(){
@@ -54,6 +54,27 @@ public class TestFrom1 {
         String s = "abcabcd";
         int res = test.lengthOfLongestSubstring(s);
         System.out.println(res);
+    }
+
+
+    public static void test04(){
+
+    }
+
+    public static void test05(){
+
+    }
+
+    public static void test06(){
+
+    }
+
+    public static void test07(){
+        _7ReverseInt test = new _7ReverseInt();
+        int x=-2147483648;
+        System.out.println(x);
+        System.out.println(Integer.MIN_VALUE);
+        System.out.println(test.reverse(x));
     }
 
 }
