@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class TestFrom1 {
     public static void main(String[] args) {
-        test07();
+        test04();
     }
 
     public static void test01(){
@@ -58,7 +58,10 @@ public class TestFrom1 {
 
 
     public static void test04(){
-
+        _4MidTwoArray test = new _4MidTwoArray();
+        int[] num1 = null;
+        int[] num2 = {2,3};
+        System.out.println(test.findMedianSortedArrays(num1,num2));
     }
 
     public static void test05(){
