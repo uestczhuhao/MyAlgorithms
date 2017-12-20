@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class TestFrom1 {
     public static void main(String[] args) {
-        test04();
+        test05();
     }
 
     public static void test01(){
@@ -65,7 +65,9 @@ public class TestFrom1 {
     }
 
     public static void test05(){
-
+        _5LongestPalinSubstr test = new _5LongestPalinSubstr();
+        String str = "aaaabaaa";
+        System.out.println(test.longestPalindrome(str));
     }
 
     public static void test06(){
