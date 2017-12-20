@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class TestFrom1 {
     public static void main(String[] args) {
-        test05();
+        test06();
     }
 
     public static void test01(){
@@ -71,7 +71,10 @@ public class TestFrom1 {
     }
 
     public static void test06(){
-
+        _6ZigZagConversion test = new _6ZigZagConversion();
+        String st = "PAYPALISHIRING";
+//        String st = "123456789";
+        System.out.println(test.convert(st,3));
     }
 
     public static void test07(){
