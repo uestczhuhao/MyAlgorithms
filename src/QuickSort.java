@@ -7,15 +7,16 @@ import java.util.Random;
  */
 public class QuickSort {
 
-    private static int testtt= 1;
+    private static int testtt = 1;
+
     public static void main(String[] args) {
-        int[] a = {10,3,3,54,45,6,17,8,9};
+        int[] a = {10, 3, 3, 54, 45, 6, 17, 8, 9};
 //        QSort ( a,0,8 );
 //        quickSort (a,0,a.length-1);
 //        System.out.println (Arrays.toString (a));
-        QuickSort test = new QuickSort ();
+        QuickSort test = new QuickSort();
         test.testtt++;
-        System.out.println (testtt);
+        System.out.println(testtt);
     }
 
 
@@ -78,32 +79,31 @@ public class QuickSort {
 //        source[low] = temp;
 //        return low;
 //    }
+    private static void quickSort(int[] arr, int low, int high) {
+        if (arr == null || arr.length == 0)
+            throw new Error("Invalid Input!!!");
 
-    private static void quickSort(int[] arr,int low,int high){
-        if (arr == null || arr.length ==0)
-            throw new Error ( "Invalid Input!!!" );
+        if (low < high) {
+            int index = partition(arr, low, high);
 
-        if (low < high){
-            int index = partition ( arr,low,high );
-
-            quickSort ( arr,low,index-1 );
-            quickSort ( arr,index+1,high );
+            quickSort(arr, low, index - 1);
+            quickSort(arr, index + 1, high);
         }
     }
 
-    private static int partition(int[] arr,int low,int high){
-        if (low>=high)
+    private static int partition(int[] arr, int low, int high) {
+        if (low >= high)
             return low;
         ///制作一个在[low,high]中的随机数，每次调用返回一个随机值
-        Random ran = new Random (  );
-        int index = low+ran.nextInt (high-low+1);
-        swap(arr,low,index);
+        Random ran = new Random();
+        int index = low + ran.nextInt(high - low + 1);
+        swap(arr, low, index);
         int temp = arr[low];
-        while (low<high){
-            while (low<high && arr[high]>= temp)
+        while (low < high) {
+            while (low < high && arr[high] >= temp)
                 high--;
             arr[low] = arr[high];
-            while (low<high && arr[low] <= temp)
+            while (low < high && arr[low] <= temp)
                 low++;
             arr[high] = arr[low];
 //            System.out.println (Arrays.toString ( arr ));
@@ -112,7 +112,7 @@ public class QuickSort {
         return low;
     }
 
-    private static void swap(int[] arr,int a,int b){
+    private static void swap(int[] arr, int a, int b) {
         int tmp = arr[a];
         arr[a] = arr[b];
         arr[b] = tmp;

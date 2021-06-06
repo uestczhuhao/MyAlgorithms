@@ -7,18 +7,18 @@ import java.util.Arrays;
  */
 public class HeapSort {
     public static void main(String[] args) {
-        int[] a = {10,3,3,54,45,6,17,8,9};
-        int[] b = {50,10,90,30,70,40,80,60,20};
-        int[] c ={5,8,9,6,2};
+        int[] a = {10, 3, 3, 54, 45, 6, 17, 8, 9};
+        int[] b = {50, 10, 90, 30, 70, 40, 80, 60, 20};
+        int[] c = {5, 8, 9, 6, 2};
 //        int[] temp = HeapSort ( a );
-        heapSort ( b );
-        System.out.println (Arrays.toString ( b ));
+        heapSort(b);
+        System.out.println(Arrays.toString(b));
 //        System.out.println (Arrays.toString ( temp ));
 
     }
 
 
-//    public static int[] HeapSort(int[] a){
+    //    public static int[] HeapSort(int[] a){
 //        int[] b =new int[a.length+1];
 //        //把a数组首位加个0,赋值到b数组
 //        //原因是堆排序的序号从1开始，从0开始就打乱了其规则
@@ -60,36 +60,36 @@ public class HeapSort {
 //        }
 //        b[s] = temp;
 //    }
-    private static void heapSort(int[] arr){
-        if (arr == null || arr.length ==0)
-            throw new Error ( "Invalid Input!!!" );
+    private static void heapSort(int[] arr) {
+        if (arr == null || arr.length == 0)
+            throw new Error("Invalid Input!!!");
 
-        int[] arrTmp = new int[arr.length+1];
+        int[] arrTmp = new int[arr.length + 1];
         int length = arr.length;
-        System.arraycopy ( arr,0,arrTmp,1,arr.length );
+        System.arraycopy(arr, 0, arrTmp, 1, arr.length);
 
-        for (int i=length/2;i>0;i--)
-            heapAdust ( arrTmp,i,length );
+        for (int i = length / 2; i > 0; i--)
+            heapAdust(arrTmp, i, length);
 
 //        System.out.println (Arrays.toString ( arrTmp ));
-        for (int i=length;i>1;i--){
+        for (int i = length; i > 1; i--) {
             int temp = arrTmp[1];
             arrTmp[1] = arrTmp[i];
             arrTmp[i] = temp;
-            heapAdust ( arrTmp,1,i-1 );
+            heapAdust(arrTmp, 1, i - 1);
         }
-        System.arraycopy ( arrTmp,1,arr,0,length);
+        System.arraycopy(arrTmp, 1, arr, 0, length);
     }
 
-    private static void heapAdust(int[] arr,int start,int end){
+    private static void heapAdust(int[] arr, int start, int end) {
         int temp = arr[start];
         ///index的作用是指示，把最大值放在start处，次大值依次上升
         int index = start;
-        for (int i=start*2;i<=end;i*=2){
-            if (i<end && arr[i]<arr[i+1])
+        for (int i = start * 2; i <= end; i *= 2) {
+            if (i < end && arr[i] < arr[i + 1])
                 i++;
 
-            if (temp < arr[i]){
+            if (temp < arr[i]) {
                 ///此处开始写成arr[start] = arr[i];是错误的
                 ///因为第一次循环的值是最大的，第二次是次大的，用之前的方法最大值会被次大值覆盖
                 arr[index] = arr[i];
@@ -99,7 +99,7 @@ public class HeapSort {
         arr[index] = temp;
     }
 
-    private static void swap(int[] arr,int a,int b){
+    private static void swap(int[] arr, int a, int b) {
         int tmp = arr[a];
         arr[a] = arr[b];
         arr[b] = tmp;
